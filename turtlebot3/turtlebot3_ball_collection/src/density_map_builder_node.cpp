@@ -1,6 +1,7 @@
 #include "density_map_builder_node.hpp"
 #include <cmath>
 #include <algorithm>
+#include <cstdlib>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 using namespace std::chrono_literals;
@@ -12,6 +13,7 @@ DensityMapBuilderNode::DensityMapBuilderNode() : Node("density_map_builder_node"
     std::bind(&DensityMapBuilderNode::target_poses_callback, this, std::placeholders::_1));
 
   density_map_pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("density_map", 10);
+  map_sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("/map", rclcpp::QoS(rclcpp::KeepLast(1)).transient_local(), std::bind(&DensityMapBuilderNode::map_callback, this, std::placeholders::_1));
   marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("/visualization/density_markers", 10);
   nav_client_ = rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(
     this, "/navigate_to_pose");
@@ -25,7 +27,7 @@ DensityMapBuilderNode::DensityMapBuilderNode() : Node("density_map_builder_node"
   this->declare_parameter<int>("density_increment", 10);
   this->declare_parameter<int>("max_density", 100);
   this->declare_parameter<double>("gaussian_sigma", 0.5);
-  this->declare_parameter<double>("time_decay_factor", 0.95);
+  this->declare_parameter<double>("time_decay_factor", 0.5);
   this->declare_parameter<bool>("navigate_on_peak", true);
   this->declare_parameter<double>("goal_republish_distance", 0.2);
   this->declare_parameter<std::string>("spin_action_name", "/spin");
@@ -34,6 +36,7 @@ DensityMapBuilderNode::DensityMapBuilderNode() : Node("density_map_builder_node"
   this->declare_parameter<double>("lost_target_timeout_sec", 3.0);
   this->declare_parameter<double>("spin_angle_rad", 2.0 * M_PI);
   this->declare_parameter<double>("spin_cooldown_sec", 1.0);
+  this->declare_parameter<bool>("enable_lost_target_spin", true);
 
   this->get_parameter("resolution", resolution_);
   this->get_parameter("width", width_);
@@ -52,24 +55,32 @@ DensityMapBuilderNode::DensityMapBuilderNode() : Node("density_map_builder_node"
   this->get_parameter("lost_target_timeout_sec", lost_target_timeout_sec_);
   this->get_parameter("spin_angle_rad", spin_angle_rad_);
   this->get_parameter("spin_cooldown_sec", spin_cooldown_sec_);
+  this->get_parameter("enable_lost_target_spin", enable_lost_target_spin_);
 
   spin_client_ = rclcpp_action::create_client<nav2_msgs::action::Spin>(this, spin_action_name_);
 
   pause_decay_srv_ = this->create_service<std_srvs::srv::Trigger>(
     "/pause_decay",
-    std::bind(&DensityMapBuilderNode::handle_pause_decay, this, std::placeholders::_1, std::placeholders::_2));
+    [this](const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
+           std::shared_ptr<std_srvs::srv::Trigger::Response> response) {
+      handle_pause_decay(request, response);
+    });
   resume_decay_srv_ = this->create_service<std_srvs::srv::Trigger>(
     "/resume_decay",
-    std::bind(&DensityMapBuilderNode::handle_resume_decay, this, std::placeholders::_1, std::placeholders::_2));
+    [this](const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
+           std::shared_ptr<std_srvs::srv::Trigger::Response> response) {
+      handle_resume_decay(request, response);
+    });
 
   lost_target_timer_ = this->create_wall_timer(
     200ms, std::bind(&DensityMapBuilderNode::monitor_lost_targets, this));
   startup_spin_timer_ = this->create_wall_timer(
     std::chrono::duration_cast<std::chrono::nanoseconds>(
       std::chrono::duration<double>(startup_spin_delay_sec_)),
-    std::bind(&DensityMapBuilderNode::maybe_startup_spin, this));
+    [this]() { maybe_startup_spin(); });
 
   last_detection_time_ = this->now();
+  has_seen_detection_ = false;
   last_spin_time_ = this->now() - rclcpp::Duration::from_seconds(spin_cooldown_sec_ + 1.0);
 
   // Initialize TF2 buffer and listener
@@ -92,8 +103,17 @@ DensityMapBuilderNode::DensityMapBuilderNode() : Node("density_map_builder_node"
     enable_startup_spin_ ? "true" : "false", lost_target_timeout_sec_, spin_action_name_.c_str());
 }
 
+void DensityMapBuilderNode::map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
+{
+  latest_map_ = msg;
+}
+
 void DensityMapBuilderNode::target_poses_callback(const geometry_msgs::msg::PoseArray::SharedPtr msg)
 {
+  if (nav_in_progress_) {
+    return;
+  }
+
   std::vector<geometry_msgs::msg::Point> points;
   points.reserve(msg->poses.size());
   for (const auto &pose : msg->poses) {
@@ -107,6 +127,7 @@ void DensityMapBuilderNode::target_poses_callback(const geometry_msgs::msg::Pose
     return;
   }
 
+  has_seen_detection_ = true;
   last_detection_time_ = this->now();
 
   RCLCPP_INFO(this->get_logger(), "Received %zu balls from %s frame", points.size(), msg->header.frame_id.c_str());
@@ -118,7 +139,7 @@ void DensityMapBuilderNode::target_poses_callback(const geometry_msgs::msg::Pose
     geometry_msgs::msg::TransformStamped transform_stamped;
     try {
       transform_stamped = tf_buffer_->lookupTransform(
-        "map", msg->header.frame_id, msg->header.stamp, std::chrono::seconds(1));
+        "map", msg->header.frame_id, tf2::TimePointZero, tf2::durationFromSec(1.0));
     } catch (tf2::TransformException &ex) {
       RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000, "TF2 transform error: %s", ex.what());
       return; 
@@ -210,35 +231,49 @@ void DensityMapBuilderNode::publish_density_map()
 
   // Publish markers for visualization
   visualization_msgs::msg::MarkerArray markers;
+  visualization_msgs::msg::Marker marker;
+  marker.header.frame_id = "map";
+  marker.header.stamp = this->now();
+  marker.ns = "density";
+  marker.id = 0;
+  marker.type = visualization_msgs::msg::Marker::CUBE_LIST;
+  marker.action = visualization_msgs::msg::Marker::ADD;
+  marker.scale.x = marker.scale.y = resolution_;
+  marker.scale.z = 0.01;
+  marker.pose.orientation.w = 1.0;
+  marker.color.r = 1.0;
+  marker.color.g = 0.0;
+  marker.color.b = 0.0;
+  marker.color.a = 1.0;
+  
   for (int i = 0; i < width_; ++i) {
     for (int j = 0; j < height_; ++j) {
       int index = j * width_ + i;
       if (density_grid_.data[index] > 0) {
-        visualization_msgs::msg::Marker marker;
-        marker.header.frame_id = "map";
-        marker.header.stamp = this->now();
-        marker.ns = "density";
-        marker.id = index;
-        marker.type = visualization_msgs::msg::Marker::CUBE;
-        marker.action = visualization_msgs::msg::Marker::ADD;
-        marker.pose.position.x = origin_x_ + i * resolution_;
-        marker.pose.position.y = origin_y_ + j * resolution_;
-        marker.pose.position.z = 0.0;
-        marker.scale.x = marker.scale.y = resolution_;
-        marker.scale.z = 0.01;
-        marker.color.r = 1.0;
-        marker.color.g = 0.0;
-        marker.color.b = 0.0;
-        marker.color.a = density_grid_.data[index] / 100.0;
-        markers.markers.push_back(marker);
+        geometry_msgs::msg::Point p;
+        p.x = origin_x_ + i * resolution_;
+        p.y = origin_y_ + j * resolution_;
+        p.z = 0.0;
+        marker.points.push_back(p);
+        
+        std_msgs::msg::ColorRGBA color;
+        color.r = 1.0;
+        color.g = 0.0;
+        color.b = 0.0;
+        color.a = density_grid_.data[index] / 100.0;
+        marker.colors.push_back(color);
       }
     }
+  }
+  if (!marker.points.empty()) {
+    markers.markers.push_back(marker);
   }
   marker_pub_->publish(markers);
 }
 
 void DensityMapBuilderNode::send_peak_navigation_goal()
 {
+  this->get_parameter("navigate_on_peak", navigate_on_peak_);
   if (!navigate_on_peak_) {
     return;
   }
@@ -247,7 +282,14 @@ void DensityMapBuilderNode::send_peak_navigation_goal()
     return;
   }
 
-  auto max_iter = std::max_element(density_grid_.data.begin(), density_grid_.data.end());
+  int max_val = 0;
+  auto max_iter = density_grid_.data.end();
+  for (auto it = density_grid_.data.begin(); it != density_grid_.data.end(); ++it) {
+    if (*it > max_val) {
+      max_val = *it;
+      max_iter = it;
+    }
+  }
   if (max_iter == density_grid_.data.end() || *max_iter <= 0) {
     return;
   }
@@ -261,7 +303,7 @@ void DensityMapBuilderNode::send_peak_navigation_goal()
   goal_point.y = origin_y_ + (static_cast<double>(y) + 0.5) * resolution_;
   goal_point.z = 0.0;
 
-  if (has_last_goal_) {
+  if (has_last_goal_ && nav_in_progress_) {
     const double dx = goal_point.x - last_goal_point_.x;
     const double dy = goal_point.y - last_goal_point_.y;
     if (std::hypot(dx, dy) < goal_republish_distance_) {
@@ -277,11 +319,46 @@ void DensityMapBuilderNode::send_peak_navigation_goal()
 
   nav2_msgs::action::NavigateToPose::Goal goal;
   goal.pose.header.frame_id = "map";
-  goal.pose.header.stamp = this->now();
+  goal.pose.header.stamp = rclcpp::Time(0, 0, this->get_clock()->get_clock_type()); // Use TimePointZero to avoid extrapolation errors
   goal.pose.pose.position = goal_point;
   goal.pose.pose.orientation.w = 1.0;
 
-  nav_client_->async_send_goal(goal);
+  nav_in_progress_ = true;
+  rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions
+    options;
+  options.result_callback =
+    [this, goal_point](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult & result) {
+      // Only set to false if this was the latest goal, otherwise we overwrite the new goal's state
+      if (std::hypot(last_goal_point_.x - goal_point.x, last_goal_point_.y - goal_point.y) < 0.01) {
+          this->nav_in_progress_ = false;
+      }
+      if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+        geometry_msgs::msg::TransformStamped transform;
+        try {
+          transform = tf_buffer_->lookupTransform("map", "base_link", tf2::TimePointZero);
+          double rx = transform.transform.translation.x;
+          double ry = transform.transform.translation.y;
+          double dist = std::hypot(goal_point.x - rx, goal_point.y - ry);
+          if (dist > 0.2) {
+            RCLCPP_WARN(this->get_logger(), "Fake success detected (dist %.2f m). Clearing unreachable density peak.", dist);
+            int center_x = static_cast<int>((goal_point.x - origin_x_) / resolution_);
+            int center_y = static_cast<int>((goal_point.y - origin_y_) / resolution_);
+            for (int dx = -15; dx <= 15; ++dx) {
+              for (int dy = -15; dy <= 15; ++dy) {
+                int nx = center_x + dx;
+                int ny = center_y + dy;
+                if (nx >= 0 && nx < width_ && ny >= 0 && ny < height_) {
+                  density_grid_.data[ny * width_ + nx] = 0;
+                }
+              }
+            }
+          }
+        } catch (tf2::TransformException &ex) {
+          RCLCPP_DEBUG(this->get_logger(), "TF Error: %s", ex.what());
+        }
+      }
+    };
+  nav_client_->async_send_goal(goal, options);
   last_goal_point_ = goal_point;
   has_last_goal_ = true;
 
@@ -331,7 +408,14 @@ void DensityMapBuilderNode::on_spin_goal_response(
   if (!goal_handle) {
     spin_in_progress_ = false;
     set_decay_paused(false, "spin_goal_rejected");
-    RCLCPP_WARN(this->get_logger(), "Spin goal was rejected by Nav2");
+    RCLCPP_WARN(this->get_logger(), "Spin goal was rejected by Nav2. Retrying in 5 seconds...");
+    if (enable_startup_spin_) {
+      startup_spin_triggered_ = false;
+      startup_spin_timer_ = this->create_wall_timer(
+        std::chrono::duration_cast<std::chrono::nanoseconds>(
+          std::chrono::duration<double>(5.0)),
+        [this]() { maybe_startup_spin(); });
+    }
     return;
   }
   RCLCPP_INFO(this->get_logger(), "Spin goal accepted");
@@ -355,13 +439,74 @@ void DensityMapBuilderNode::on_spin_result(
     RCLCPP_WARN(this->get_logger(), "Spin ended with unknown result code");
   }
 
-  // Immediately transition from scan phase back to peak-driven navigation.
-  send_peak_navigation_goal();
+  int max_val = 0;
+  auto max_iter = density_grid_.data.end();
+  for (auto it = density_grid_.data.begin(); it != density_grid_.data.end(); ++it) {
+    if (*it > max_val) {
+      max_val = *it;
+      max_iter = it;
+    }
+  }
+  if (max_iter == density_grid_.data.end() || *max_iter <= 0) {
+    static int s_idx = 0;
+    std::vector<std::pair<double, double>> s_path;
+    double min_x = origin_x_ + 1.0;
+    double max_x = origin_x_ + (width_ * resolution_) - 1.0;
+    double min_y = origin_y_ + 1.0;
+    double max_y = origin_y_ + (height_ * resolution_) - 1.0;
+    int num_lines = 5;
+    double y_step = (max_y - min_y) / (num_lines - 1);
+    for (int i = 0; i < num_lines; i++) {
+        double y = min_y + i * y_step;
+        if (i % 2 == 0) {
+            s_path.push_back({min_x, y});
+            s_path.push_back({max_x, y});
+        } else {
+            s_path.push_back({max_x, y});
+            s_path.push_back({min_x, y});
+        }
+    }
+    
+    geometry_msgs::msg::Point random_goal;
+    random_goal.x = s_path[s_idx % s_path.size()].first;
+    random_goal.y = s_path[s_idx % s_path.size()].second;
+    random_goal.z = 0.0;
+    s_idx++;
+    
+    nav2_msgs::action::NavigateToPose::Goal nav_goal;
+    nav_goal.pose.header.frame_id = "map";
+    nav_goal.pose.header.stamp = rclcpp::Time(0, 0, this->get_clock()->get_clock_type());
+    nav_goal.pose.pose.position = random_goal;
+    nav_goal.pose.pose.orientation.w = 1.0;
+    
+    if (nav_client_) {
+      nav_in_progress_ = true;
+      rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions
+        nav_options;
+      nav_options.result_callback =
+        [this, random_goal](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult & result) {
+          if (std::hypot(last_goal_point_.x - random_goal.x, last_goal_point_.y - random_goal.y) < 0.01) {
+              this->nav_in_progress_ = false;
+          }
+        };
+      nav_client_->async_send_goal(nav_goal, nav_options);
+      last_goal_point_ = random_goal;
+      has_last_goal_ = true;
+      RCLCPP_INFO(this->get_logger(), "Spin found no targets. Exploring random point (%.2f, %.2f)", random_goal.x, random_goal.y);
+    }
+  } else {
+    // Immediately transition from scan phase back to peak-driven navigation.
+    send_peak_navigation_goal();
+  }
 }
 
 void DensityMapBuilderNode::monitor_lost_targets()
 {
-  if (spin_in_progress_) {
+  if (spin_in_progress_ || nav_in_progress_) {
+    return;
+  }
+
+  if (!enable_lost_target_spin_) {
     return;
   }
 
@@ -379,10 +524,20 @@ void DensityMapBuilderNode::maybe_startup_spin()
     return;
   }
 
-  startup_spin_triggered_ = true;
-  startup_spin_timer_->cancel();
   if (enable_startup_spin_) {
+    if (!spin_client_->action_server_is_ready()) {
+      RCLCPP_INFO_THROTTLE(
+        this->get_logger(), *this->get_clock(), 5000,
+        "Waiting for spin action server '%s' to become available...", spin_action_name_.c_str());
+      return;
+    }
+    
+    startup_spin_triggered_ = true;
+    startup_spin_timer_->cancel();
     trigger_spin("startup");
+  } else {
+    startup_spin_triggered_ = true;
+    startup_spin_timer_->cancel();
   }
 }
 

@@ -8,6 +8,7 @@ from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition
 from launch_ros.actions import Node
 
 TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
@@ -15,6 +16,7 @@ TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
+    launch_rviz = LaunchConfiguration('launch_rviz', default='true')
 
     slam_params_file = os.path.join(
         get_package_share_directory('turtlebot3_ball_collection'),
@@ -41,6 +43,10 @@ def generate_launch_description():
             'use_sim_time',
             default_value='true',
             description='Use simulation (Gazebo) clock if true'),
+        DeclareLaunchArgument(
+            'launch_rviz',
+            default_value='true',
+            description='Whether to launch RViz'),
 
         # SLAM Toolbox for online mapping
         Node(
@@ -66,5 +72,6 @@ def generate_launch_description():
             name='rviz2',
             arguments=['-d', rviz_config_dir],
             parameters=[{'use_sim_time': use_sim_time}],
+            condition=IfCondition(launch_rviz),
             output='screen'),
     ])

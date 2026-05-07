@@ -1,0 +1,1043 @@
+[INFO] [launch]: All log files can be found below /home/u22/.ros/log/2026-05-04-14-35-45-074293-u22-virtual-machine-4785
+[INFO] [launch]: Default logging verbosity is set to INFO
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+[INFO] [gzserver-1]: process started with pid [4795]
+[INFO] [gzclient-2]: process started with pid [4797]
+[INFO] [robot_state_publisher-3]: process started with pid [4799]
+[INFO] [spawn_entity.py-4]: process started with pid [4801]
+[INFO] [python3-5]: process started with pid [4803]
+[INFO] [yolo_detector_node-6]: process started with pid [4805]
+[INFO] [density_map_builder_node-7]: process started with pid [4807]
+[INFO] [ball_collector.py-8]: process started with pid [4809]
+[robot_state_publisher-3] [INFO] [1777876554.255655818] [robot_state_publisher]: got segment base_footprint
+[robot_state_publisher-3] [INFO] [1777876554.256164215] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-3] [INFO] [1777876554.256238097] [robot_state_publisher]: got segment base_scan
+[robot_state_publisher-3] [INFO] [1777876554.256262148] [robot_state_publisher]: got segment camera_depth_frame
+[robot_state_publisher-3] [INFO] [1777876554.256283549] [robot_state_publisher]: got segment camera_depth_optical_frame
+[robot_state_publisher-3] [INFO] [1777876554.256305881] [robot_state_publisher]: got segment camera_link
+[robot_state_publisher-3] [INFO] [1777876554.256326871] [robot_state_publisher]: got segment camera_rgb_frame
+[robot_state_publisher-3] [INFO] [1777876554.256348140] [robot_state_publisher]: got segment camera_rgb_optical_frame
+[robot_state_publisher-3] [INFO] [1777876554.256368918] [robot_state_publisher]: got segment caster_back_left_link
+[robot_state_publisher-3] [INFO] [1777876554.256389161] [robot_state_publisher]: got segment caster_back_right_link
+[robot_state_publisher-3] [INFO] [1777876554.256409153] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-3] [INFO] [1777876554.256429255] [robot_state_publisher]: got segment wheel_left_link
+[robot_state_publisher-3] [INFO] [1777876554.256449377] [robot_state_publisher]: got segment wheel_right_link
+[density_map_builder_node-7] [INFO] [1777876554.361723866] [density_map_builder]: Density map builder ready. startup_spin=true, lost_target_timeout=15.00s, spin_action=/spin
+[ball_collector.py-8] [INFO] [1777876556.282529795] [ball_collector]: BallCollector started: topic=/gazebo/model_states, delete_service=/delete_entity, distance=0.40m, half_fov=0.70rad
+[spawn_entity.py-4] [INFO] [1777876556.699693307] [spawn_entity]: Spawn Entity started
+[spawn_entity.py-4] [INFO] [1777876556.701106902] [spawn_entity]: Loading entity XML from file /home/u22/turtlebot/install/turtlebot3_gazebo/share/turtlebot3_gazebo/models/turtlebot3_waffle/model.sdf
+[spawn_entity.py-4] [INFO] [1777876556.718428666] [spawn_entity]: Waiting for service /spawn_entity, timeout = 120
+[spawn_entity.py-4] [INFO] [1777876556.719572825] [spawn_entity]: Waiting for service /spawn_entity
+[INFO] [async_slam_toolbox_node-9]: process started with pid [4960]
+[INFO] [controller_server-10]: process started with pid [4962]
+[INFO] [smoother_server-11]: process started with pid [4964]
+[INFO] [planner_server-12]: process started with pid [4966]
+[INFO] [behavior_server-13]: process started with pid [4968]
+[INFO] [bt_navigator-14]: process started with pid [4970]
+[INFO] [waypoint_follower-15]: process started with pid [4972]
+[INFO] [velocity_smoother-16]: process started with pid [4974]
+[INFO] [lifecycle_manager-17]: process started with pid [4976]
+[INFO] [rviz2-18]: process started with pid [4978]
+[velocity_smoother-16] [INFO] [1777876561.351604006] [velocity_smoother]: 
+[velocity_smoother-16] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-16] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[rviz2-18] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[lifecycle_manager-17] [INFO] [1777876561.433747516] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-17] [INFO] [1777876561.572146527] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[bt_navigator-14] [INFO] [1777876561.634006064] [bt_navigator]: 
+[bt_navigator-14] 	bt_navigator lifecycle node launched. 
+[bt_navigator-14] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-14] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-14] [INFO] [1777876561.648551629] [bt_navigator]: Creating
+[smoother_server-11] [INFO] [1777876561.755347555] [smoother_server]: 
+[smoother_server-11] 	smoother_server lifecycle node launched. 
+[smoother_server-11] 	Waiting on external lifecycle transitions to activate
+[smoother_server-11] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[async_slam_toolbox_node-9] [INFO] [1777876561.762683796] [slam_toolbox]: Node using stack size 40000000
+[smoother_server-11] [INFO] [1777876561.831261358] [smoother_server]: Creating smoother server
+[waypoint_follower-15] [INFO] [1777876561.853289746] [waypoint_follower]: 
+[waypoint_follower-15] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-15] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-15] [INFO] [1777876561.878055745] [waypoint_follower]: Creating
+[controller_server-10] [INFO] [1777876561.880970877] [controller_server]: 
+[controller_server-10] 	controller_server lifecycle node launched. 
+[controller_server-10] 	Waiting on external lifecycle transitions to activate
+[controller_server-10] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-10] [INFO] [1777876561.946613581] [controller_server]: Creating controller server
+[planner_server-12] [INFO] [1777876561.992693765] [planner_server]: 
+[planner_server-12] 	planner_server lifecycle node launched. 
+[planner_server-12] 	Waiting on external lifecycle transitions to activate
+[planner_server-12] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[behavior_server-13] [INFO] [1777876561.997575191] [behavior_server]: 
+[behavior_server-13] 	behavior_server lifecycle node launched. 
+[behavior_server-13] 	Waiting on external lifecycle transitions to activate
+[behavior_server-13] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-12] [INFO] [1777876562.016540532] [planner_server]: Creating
+[controller_server-10] [INFO] [1777876562.069529616] [local_costmap.local_costmap]: 
+[controller_server-10] 	local_costmap lifecycle node launched. 
+[controller_server-10] 	Waiting on external lifecycle transitions to activate
+[controller_server-10] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[lifecycle_manager-17] [INFO] [1777876562.078636764] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-17] [INFO] [1777876562.078839956] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-10] [INFO] [1777876562.090724200] [local_costmap.local_costmap]: Creating Costmap
+[controller_server-10] [INFO] [1777876562.096343833] [controller_server]: Configuring controller interface
+[controller_server-10] [INFO] [1777876562.097595359] [controller_server]: getting goal checker plugins..
+[controller_server-10] [INFO] [1777876562.097852292] [controller_server]: Controller frequency set to 2.0000Hz
+[controller_server-10] [INFO] [1777876562.097962945] [local_costmap.local_costmap]: Configuring
+[controller_server-10] [INFO] [1777876562.135025676] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[async_slam_toolbox_node-9] [INFO] [1777876562.150371134] [slam_toolbox]: Using solver plugin solver_plugins::CeresSolver
+[planner_server-12] [INFO] [1777876562.151324325] [global_costmap.global_costmap]: 
+[planner_server-12] 	global_costmap lifecycle node launched. 
+[planner_server-12] 	Waiting on external lifecycle transitions to activate
+[planner_server-12] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[async_slam_toolbox_node-9] [INFO] [1777876562.152915178] [slam_toolbox]: CeresSolver: Using SCHUR_JACOBI preconditioner.
+[planner_server-12] [INFO] [1777876562.153992763] [global_costmap.global_costmap]: Creating Costmap
+[controller_server-10] [INFO] [1777876562.174447689] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-10] [INFO] [1777876562.185524748] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-10] [INFO] [1777876562.185756321] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-10] [INFO] [1777876562.187008904] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-10] [INFO] [1777876562.226025068] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-10] [INFO] [1777876562.226127751] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-10] [INFO] [1777876562.228613882] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[controller_server-10] [INFO] [1777876562.327427061] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-10] [INFO] [1777876562.335845633] [controller_server]: Created goal checker : general_goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-10] [INFO] [1777876562.347201729] [controller_server]: Controller Server has general_goal_checker  goal checkers available.
+[controller_server-10] [INFO] [1777876562.455919350] [controller_server]: Created controller : FollowPath of type dwb_core::DWBLocalPlanner
+[controller_server-10] [INFO] [1777876562.489918371] [controller_server]: Setting transform_tolerance to 1.000000
+[controller_server-10] [INFO] [1777876562.647172360] [controller_server]: Using critic "RotateToGoal" (dwb_critics::RotateToGoalCritic)
+[controller_server-10] [INFO] [1777876562.654795094] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.655130749] [controller_server]: Using critic "Oscillation" (dwb_critics::OscillationCritic)
+[controller_server-10] [INFO] [1777876562.659581447] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.661751921] [controller_server]: Using critic "BaseObstacle" (dwb_critics::BaseObstacleCritic)
+[controller_server-10] [INFO] [1777876562.664134620] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.666597810] [controller_server]: Using critic "GoalAlign" (dwb_critics::GoalAlignCritic)
+[controller_server-10] [INFO] [1777876562.671544061] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.671955437] [controller_server]: Using critic "PathAlign" (dwb_critics::PathAlignCritic)
+[controller_server-10] [INFO] [1777876562.677206198] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.681290244] [controller_server]: Using critic "PathDist" (dwb_critics::PathDistCritic)
+[controller_server-10] [INFO] [1777876562.688905618] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.689340596] [controller_server]: Using critic "GoalDist" (dwb_critics::GoalDistCritic)
+[controller_server-10] [INFO] [1777876562.694242278] [controller_server]: Critic plugin initialized
+[controller_server-10] [INFO] [1777876562.694665330] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-17] [INFO] [1777876562.787025261] [lifecycle_manager_navigation]: [34m[1mConfiguring smoother_server[0m[0m
+[smoother_server-11] [INFO] [1777876562.787982258] [smoother_server]: Configuring smoother server
+[spawn_entity.py-4] [INFO] [1777876563.013739946] [spawn_entity]: Calling service /spawn_entity
+[smoother_server-11] [INFO] [1777876563.050394090] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-11] [INFO] [1777876563.077158413] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-17] [INFO] [1777876563.222143758] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-12] [INFO] [1777876563.228938687] [planner_server]: Configuring
+[planner_server-12] [INFO] [1777876563.229095432] [global_costmap.global_costmap]: Configuring
+[planner_server-12] [INFO] [1777876563.377216263] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-12] [INFO] [1777876563.422297481] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-12] [INFO] [1777876563.476461297] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-12] [INFO] [1777876563.476576426] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[gzserver-1] [INFO] [1777876563.481530653] [gazebo.gazebo_ros_state]: Publishing states of gazebo models at [/gazebo/model_states]
+[planner_server-12] [INFO] [1777876563.487178385] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[gzserver-1] [INFO] [1777876563.501094537] [gazebo.gazebo_ros_state]: Publishing states of gazebo links at [/gazebo/link_states]
+[planner_server-12] [INFO] [1777876563.523462166] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-12] [INFO] [1777876563.524303841] [global_costmap.global_costmap]: Using plugin "voxel_layer"
+[planner_server-12] [INFO] [1777876563.530348687] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-12] [INFO] [1777876563.670352606] [global_costmap.global_costmap]: Initialized plugin "voxel_layer"
+[planner_server-12] [INFO] [1777876563.670468500] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-12] [INFO] [1777876563.687064773] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-12] [INFO] [1777876563.962136895] [planner_server]: Created global planner plugin GridBased of type turtlebot3_ball_collection/GridBased
+[planner_server-12] [INFO] [1777876563.990365824] [planner_server]: Configured DensityAwareAStarPlanner: topic=/density_map obstacle_weight=1.200 density_weight=0.700
+[planner_server-12] [INFO] [1777876563.990545829] [planner_server]: Planner Server has GridBased  planners available.
+[lifecycle_manager-17] [INFO] [1777876564.178963106] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-13] [INFO] [1777876564.181843976] [behavior_server]: Configuring
+[python3-5] [INFO] [1777876564.334114776] [spawn_random_tennis_balls]: Spawned tennis_ball_0 at (3.21, -4.75)
+[behavior_server-13] [INFO] [1777876564.371657357] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors/Spin
+[behavior_server-13] [INFO] [1777876564.389833696] [behavior_server]: Configuring spin
+[rviz2-18] [INFO] [1777876564.420160487] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-18] [INFO] [1777876564.420507588] [rviz2]: OpenGl version: 4.3 (GLSL 4.3)
+[behavior_server-13] [INFO] [1777876564.448303327] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors/BackUp
+[behavior_server-13] [INFO] [1777876564.468553741] [behavior_server]: Configuring backup
+[behavior_server-13] [INFO] [1777876564.504070889] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors/Wait
+[behavior_server-13] [INFO] [1777876564.520842191] [behavior_server]: Configuring wait
+[lifecycle_manager-17] [INFO] [1777876564.563685651] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-14] [INFO] [1777876564.573103467] [bt_navigator]: Configuring
+[ball_collector.py-8] [WARN] [1777876564.946184633] [ball_collector]: Robot model not found in /gazebo/model_states
+[rviz2-18] [INFO] [1777876564.989514412] [rviz2]: Stereo is NOT SUPPORTED
+[lifecycle_manager-17] [INFO] [1777876565.381465094] [lifecycle_manager_navigation]: [34m[1mConfiguring waypoint_follower[0m[0m
+[waypoint_follower-15] [INFO] [1777876565.383879252] [waypoint_follower]: Configuring
+[waypoint_follower-15] [INFO] [1777876565.511581253] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-17] [INFO] [1777876565.517334462] [lifecycle_manager_navigation]: [34m[1mConfiguring velocity_smoother[0m[0m
+[velocity_smoother-16] [INFO] [1777876565.518078840] [velocity_smoother]: Configuring velocity smoother
+[lifecycle_manager-17] [INFO] [1777876565.553354886] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-10] [INFO] [1777876565.554372025] [controller_server]: Activating
+[controller_server-10] [INFO] [1777876565.554509496] [local_costmap.local_costmap]: Activating
+[controller_server-10] [INFO] [1777876565.554553775] [local_costmap.local_costmap]: Checking transform
+[controller_server-10] [INFO] [1777876565.554783966] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876566.055793943] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[gzserver-1] [INFO] [1777876566.280662648] [turtlebot3_imu]: <initial_orientation_as_reference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[controller_server-10] [INFO] [1777876566.554751581] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876567.054862480] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876567.554878395] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876568.056545869] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876568.554684617] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-10] [INFO] [1777876569.055919747] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[density_map_builder_node-7] [INFO] [1777876569.347217073] [density_map_builder]: Decay paused by startup
+[density_map_builder_node-7] [INFO] [1777876569.347659647] [density_map_builder]: Triggered spin (reason=startup, angle=6.28 rad)
+[density_map_builder_node-7] [INFO] [1777876569.348518911] [density_map_builder]: Decay resumed by spin_goal_rejected
+[density_map_builder_node-7] [WARN] [1777876569.348589330] [density_map_builder]: Spin goal was rejected by Nav2. Retrying in 5 seconds...
+[controller_server-10] [INFO] [1777876569.555278200] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[gzserver-1] [INFO] [1777876569.849322701] [camera_driver]: Publishing camera info to [/camera/camera_info]
+[spawn_entity.py-4] [INFO] [1777876569.978151719] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [waffle]
+[controller_server-10] [INFO] [1777876570.054656023] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876570.206329225] [spawn_random_tennis_balls]: Spawned tennis_ball_1 at (-5.17, -2.77)
+[gzserver-1] [INFO] [1777876570.239211800] [depth_camera_driver]: Publishing camera info to [/depth_camera/camera_info]
+[gzserver-1] [INFO] [1777876570.249015754] [depth_camera_driver]: Publishing depth camera info to [/depth_camera/depth/camera_info]
+[gzserver-1] [INFO] [1777876570.269312554] [depth_camera_driver]: Publishing pointcloud to [/depth_camera/points]
+[python3-5] [INFO] [1777876570.361777074] [spawn_random_tennis_balls]: Spawned tennis_ball_2 at (5.44, 1.77)
+[INFO] [spawn_entity.py-4]: process has finished cleanly [pid 4801]
+[python3-5] [INFO] [1777876570.390422386] [spawn_random_tennis_balls]: Spawned tennis_ball_3 at (9.02, -4.13)
+[python3-5] [INFO] [1777876570.411866789] [spawn_random_tennis_balls]: Spawned tennis_ball_4 at (-1.80, -4.70)
+[python3-5] [INFO] [1777876570.429112133] [spawn_random_tennis_balls]: Spawned tennis_ball_5 at (-6.47, 0.05)
+[gzserver-1] [INFO] [1777876570.515960282] [turtlebot3_diff_drive]: Wheel pair 1 separation set to [0.287000m]
+[gzserver-1] [INFO] [1777876570.516113830] [turtlebot3_diff_drive]: Wheel pair 1 diameter set to [0.066000m]
+[gzserver-1] [INFO] [1777876570.529488466] [turtlebot3_diff_drive]: Subscribed to [/cmd_vel]
+[controller_server-10] [INFO] [1777876570.554979669] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[gzserver-1] [INFO] [1777876570.557730027] [turtlebot3_diff_drive]: Advertise odometry on [/odom]
+[gzserver-1] [INFO] [1777876570.596070570] [turtlebot3_diff_drive]: Publishing odom transforms between [odom] and [base_footprint]
+[gzserver-1] [INFO] [1777876570.727401639] [turtlebot3_joint_state]: Going to publish joint [wheel_left_joint]
+[gzserver-1] [INFO] [1777876570.729261769] [turtlebot3_joint_state]: Going to publish joint [wheel_right_joint]
+[controller_server-10] [INFO] [1777876571.059969575] [local_costmap.local_costmap]: start
+[python3-5] [INFO] [1777876571.061092338] [spawn_random_tennis_balls]: Spawned tennis_ball_6 at (-10.89, -3.01)
+[python3-5] [INFO] [1777876571.343717909] [spawn_random_tennis_balls]: Spawned tennis_ball_7 at (3.45, 0.45)
+[controller_server-10] [INFO] [1777876571.584464210] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[python3-5] [INFO] [1777876571.627097818] [spawn_random_tennis_balls]: Spawned tennis_ball_8 at (-6.43, 0.89)
+[lifecycle_manager-17] [INFO] [1777876571.724919698] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-17] [INFO] [1777876571.725025008] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[smoother_server-11] [INFO] [1777876571.726219062] [smoother_server]: Activating
+[smoother_server-11] [INFO] [1777876571.726286517] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[lifecycle_manager-17] [INFO] [1777876571.853760837] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-17] [INFO] [1777876571.853850336] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-12] [INFO] [1777876571.855052170] [planner_server]: Activating
+[planner_server-12] [INFO] [1777876571.855165527] [global_costmap.global_costmap]: Activating
+[planner_server-12] [INFO] [1777876571.855204635] [global_costmap.global_costmap]: Checking transform
+[planner_server-12] [INFO] [1777876571.855268190] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876571.922867327] [spawn_random_tennis_balls]: Spawned tennis_ball_9 at (7.12, -4.94)
+[python3-5] [INFO] [1777876572.316128456] [spawn_random_tennis_balls]: Spawned tennis_ball_10 at (7.03, 1.98)
+[planner_server-12] [INFO] [1777876572.355377097] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876572.712658988] [spawn_random_tennis_balls]: Spawned tennis_ball_11 at (-3.67, -3.45)
+[planner_server-12] [INFO] [1777876572.855475409] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876573.091829307] [spawn_random_tennis_balls]: Spawned tennis_ball_12 at (10.52, -1.63)
+[planner_server-12] [INFO] [1777876573.355551598] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876573.609136798] [spawn_random_tennis_balls]: Spawned tennis_ball_13 at (-9.37, -4.03)
+[planner_server-12] [INFO] [1777876573.855947238] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876573.989189140] [spawn_random_tennis_balls]: Spawned tennis_ball_14 at (7.99, 1.04)
+[planner_server-12] [INFO] [1777876574.355875451] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876574.523770179] [spawn_random_tennis_balls]: Spawned tennis_ball_15 at (7.06, 2.30)
+[planner_server-12] [INFO] [1777876574.855942133] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876575.117965478] [spawn_random_tennis_balls]: Spawned tennis_ball_16 at (0.83, 4.73)
+[planner_server-12] [INFO] [1777876575.355458104] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876575.731503882] [spawn_random_tennis_balls]: Spawned tennis_ball_17 at (-2.79, 0.52)
+[planner_server-12] [INFO] [1777876575.855777081] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876576.336100925] [spawn_random_tennis_balls]: Spawned tennis_ball_18 at (7.58, 1.19)
+[planner_server-12] [INFO] [1777876576.361394188] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[planner_server-12] [INFO] [1777876576.855554370] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[python3-5] [INFO] [1777876577.049172464] [spawn_random_tennis_balls]: Spawned tennis_ball_19 at (8.32, 0.77)
+[python3-5] [INFO] [1777876577.051471021] [spawn_random_tennis_balls]: Finished spawning 20 tennis balls
+[INFO] [python3-5]: process has finished cleanly [pid 4803]
+[planner_server-12] [INFO] [1777876577.355385956] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[planner_server-12] [INFO] [1777876577.855540569] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[async_slam_toolbox_node-9] [WARN] [1777876578.066119872] [slam_toolbox]: minimum laser range setting (0.1 m) exceeds the capabilities of the used Lidar (0.1 m)
+[async_slam_toolbox_node-9] Info: clipped range threshold to be within minimum and maximum range!
+[async_slam_toolbox_node-9] Registering sensor: [Custom Described Lidar]
+[planner_server-12] [INFO] [1777876578.355461257] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.260000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876578.856677338] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.380000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876579.355692165] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.500000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876579.855485062] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.660000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876580.356068300] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.780000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876580.855684046] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 1.900000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876581.355506172] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.020000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876581.855484750] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.140000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876582.186096294] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 104 X 90 at 0.050000 m/pix
+[planner_server-12] [INFO] [1777876582.357167830] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.260000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876582.855879086] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.380000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876583.355649948] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.540000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876583.855991801] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.660000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876584.355533751] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.780000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876584.855660571] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 2.900000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[rviz2-18] [INFO] [1777876584.899830385] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-18] [INFO] [1777876585.154216844] [rviz2]: Trying to create a map of size 104 x 90 using 1 swatches
+[rviz2-18] [ERROR] [1777876585.175605053] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : 
+[rviz2-18] active samplers with a different type refer to the same texture image unit
+[planner_server-12] [INFO] [1777876585.355756405] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 3.020000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876585.855470662] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 3.140000 but the earliest data is at time 3.220000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-12] [INFO] [1777876586.355783468] [global_costmap.global_costmap]: start
+[rviz2-18] [INFO] [1777876586.602265038] [rviz2]: Trying to create a map of size 60 x 60 using 1 swatches
+[planner_server-12] [INFO] [1777876588.479478507] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[rviz2-18] [INFO] [1777876588.489451628] [rviz2]: Trying to create a map of size 600 x 600 using 1 swatches
+[lifecycle_manager-17] [INFO] [1777876588.603974447] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-17] [INFO] [1777876588.604379138] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-13] [INFO] [1777876588.605956293] [behavior_server]: Activating
+[behavior_server-13] [INFO] [1777876588.606064002] [behavior_server]: Activating spin
+[behavior_server-13] [INFO] [1777876588.606106141] [behavior_server]: Activating backup
+[behavior_server-13] [INFO] [1777876588.606138449] [behavior_server]: Activating wait
+[behavior_server-13] [INFO] [1777876588.606176312] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-17] [INFO] [1777876588.743283430] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-17] [INFO] [1777876588.743424777] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-14] [INFO] [1777876588.744642935] [bt_navigator]: Activating
+[bt_navigator-14] [INFO] [1777876589.267369797] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-17] [INFO] [1777876589.395264948] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-17] [INFO] [1777876589.395384201] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[waypoint_follower-15] [INFO] [1777876589.396881594] [waypoint_follower]: Activating
+[waypoint_follower-15] [INFO] [1777876589.397079962] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-17] [INFO] [1777876589.529662184] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-17] [INFO] [1777876589.529806968] [lifecycle_manager_navigation]: [34m[1mActivating velocity_smoother[0m[0m
+[velocity_smoother-16] [INFO] [1777876589.530754057] [velocity_smoother]: Activating
+[velocity_smoother-16] [INFO] [1777876589.531019225] [velocity_smoother]: Creating bond (velocity_smoother) to lifecycle manager.
+[lifecycle_manager-17] [INFO] [1777876589.663728114] [lifecycle_manager_navigation]: Server velocity_smoother connected with bond.
+[lifecycle_manager-17] [INFO] [1777876589.663852277] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-17] [INFO] [1777876589.663886254] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m
+[yolo_detector_node-6] [INFO] [1777876593.640208240] [yolo_detector]: RGB-D YOLO, The time alignment node has been activated.: color=/depth_camera/image_raw, depth=/depth_camera/depth/image_raw, camera_info=/depth_camera/camera_info, conf=0.05, class_id=32, slop=0.2, queue=2, imgsz=640, device=cpu, process_every_n_frames=5, debug_image=True(/vision/debug_image)
+[yolo_detector_node-6] [INFO] [1777876594.356579782] [yolo_detector]: Camera intrinsics parameters have been updated.: fx=565.6008952774197, fy=565.6008952774197, cx=320.5, cy=240.5
+[density_map_builder_node-7] [INFO] [1777876598.093433925] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876598.095000357] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876598.097764057] [yolo_detector]: Timing window: samples=1, avg_cb=2959.0ms, avg_inf=2850.7ms
+[density_map_builder_node-7] [INFO] [1777876598.097796294] [density_map_builder]: Sent navigation goal to density peak (2.75, 1.95)
+[bt_navigator-14] [INFO] [1777876598.101472050] [bt_navigator]: Begin navigating from current location (-0.00, 3.00) to (2.75, 1.95)
+[controller_server-10] [INFO] [1777876598.315111539] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-10] [WARN] [1777876598.316322916] [controller_server]: No goal checker was specified in parameter 'current_goal_checker'. Server will use only plugin loaded general_goal_checker . This warning will appear once.
+[density_map_builder_node-7] [INFO] [1777876599.682577495] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876599.685276494] [yolo_detector]: Published 2 target poses
+[controller_server-10] [INFO] [1777876599.831839717] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876600.835601556] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876601.506399966] [density_map_builder]: Received 5 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876601.507973290] [yolo_detector]: Published 5 target poses
+[density_map_builder_node-7] [INFO] [1777876601.512633751] [density_map_builder]: Sent navigation goal to density peak (2.75, 2.15)
+[bt_navigator-14] [INFO] [1777876601.603090277] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876601.603942309] [bt_navigator]: Begin navigating from current location (0.11, 3.00) to (2.75, 2.15)
+[rviz2-18] [INFO] [1777876602.249799066] [rviz2]: Trying to create a map of size 114 x 95 using 1 swatches
+[controller_server-10] [INFO] [1777876602.332331463] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876602.356909644] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 114 X 95 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876603.332686052] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876603.880454865] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876603.882565829] [yolo_detector]: Timing window: samples=3, avg_cb=1269.2ms, avg_inf=1258.6ms
+[density_map_builder_node-7] [INFO] [1777876603.885989181] [density_map_builder]: Sent navigation goal to density peak (2.85, 2.05)
+[bt_navigator-14] [INFO] [1777876603.902778320] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876603.903921073] [bt_navigator]: Begin navigating from current location (0.23, 2.99) to (2.85, 2.05)
+[controller_server-10] [INFO] [1777876604.837265291] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876605.627947585] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876605.631994022] [density_map_builder]: Sent navigation goal to density peak (2.85, 2.05)
+[bt_navigator-14] [INFO] [1777876605.704544834] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876605.705193768] [bt_navigator]: Begin navigating from current location (0.31, 3.05) to (2.85, 2.05)
+[controller_server-10] [INFO] [1777876605.832717620] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876607.058020104] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876607.059306450] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876607.069091318] [density_map_builder]: Sent navigation goal to density peak (2.85, 2.05)
+[bt_navigator-14] [INFO] [1777876607.103482513] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876607.104196621] [bt_navigator]: Begin navigating from current location (0.35, 3.12) to (2.85, 2.05)
+[rviz2-18] [INFO] [1777876607.217947188] [rviz2]: Trying to create a map of size 126 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876607.332347780] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876608.331753391] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876608.357392374] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 126 X 108 at 0.050000 m/pix
+[density_map_builder_node-7] [INFO] [1777876609.457139138] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876609.458876663] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876609.461711634] [yolo_detector]: Timing window: samples=3, avg_cb=756.4ms, avg_inf=748.3ms
+[density_map_builder_node-7] [INFO] [1777876609.463428533] [density_map_builder]: Sent navigation goal to density peak (2.95, 2.05)
+[bt_navigator-14] [INFO] [1777876609.503854492] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876609.507849803] [bt_navigator]: Begin navigating from current location (0.39, 3.26) to (2.95, 2.05)
+[controller_server-10] [INFO] [1777876609.831802135] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876610.203813080] [rviz2]: Message Filter dropping message: frame 'odom' at time 1.100 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[controller_server-10] [INFO] [1777876610.832270612] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876611.885816918] [density_map_builder]: Sent navigation goal to density peak (2.95, 2.05)
+[yolo_detector_node-6] [INFO] [1777876611.888827133] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876611.904320342] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876611.908737169] [bt_navigator]: Begin navigating from current location (0.40, 3.32) to (2.95, 2.05)
+[rviz2-18] [INFO] [1777876612.237473628] [rviz2]: Trying to create a map of size 132 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876612.332275909] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876612.357066046] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 132 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876613.332413922] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876614.201544431] [rviz2]: Message Filter dropping message: frame 'odom' at time 1.580 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[controller_server-10] [INFO] [1777876614.832117684] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876615.832378624] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876617.221048289] [rviz2]: Trying to create a map of size 133 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876617.332291584] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876618.233829205] [rviz2]: Message Filter dropping message: frame 'base_scan' at time 1.220 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[controller_server-10] [INFO] [1777876618.334291238] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876618.358259366] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 133 X 108 at 0.050000 m/pix
+[yolo_detector_node-6] [INFO] [1777876619.166005296] [yolo_detector]: Published 4 target poses
+[yolo_detector_node-6] [INFO] [1777876619.169515518] [yolo_detector]: Timing window: samples=2, avg_cb=791.7ms, avg_inf=782.6ms
+[density_map_builder_node-7] [INFO] [1777876619.169877642] [density_map_builder]: Received 4 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876619.179879517] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876619.203082987] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876619.203572587] [bt_navigator]: Begin navigating from current location (0.75, 3.15) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876619.831803104] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876620.832142361] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876621.703593107] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876621.705206200] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876621.728019374] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876621.728375435] [bt_navigator]: Begin navigating from current location (0.69, 3.17) to (3.15, 2.15)
+[rviz2-18] [INFO] [1777876622.220201602] [rviz2]: Trying to create a map of size 139 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876622.333324709] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876622.356899338] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 139 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876623.840336983] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876623.963116933] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876623.964759164] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876624.003107442] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876624.003482609] [bt_navigator]: Begin navigating from current location (0.72, 3.24) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876624.832128400] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876626.337634035] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876626.356665330] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876626.358396401] [yolo_detector]: Timing window: samples=3, avg_cb=854.5ms, avg_inf=844.7ms
+[density_map_builder_node-7] [INFO] [1777876626.365358949] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876626.402691739] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876626.403892645] [bt_navigator]: Begin navigating from current location (0.88, 3.32) to (3.15, 2.15)
+[rviz2-18] [INFO] [1777876627.235625003] [rviz2]: Trying to create a map of size 142 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876627.332150040] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876628.362329968] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 142 X 108 at 0.050000 m/pix
+[density_map_builder_node-7] [INFO] [1777876628.565493754] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876628.566549592] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876628.603923281] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876628.606067753] [bt_navigator]: Begin navigating from current location (0.97, 3.39) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876628.831920455] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876629.831941425] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876631.333733063] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876631.877008942] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876631.879595704] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876631.889917307] [yolo_detector]: Published 2 target poses
+[yolo_detector_node-6] [INFO] [1777876631.893197601] [yolo_detector]: Timing window: samples=2, avg_cb=686.8ms, avg_inf=672.6ms
+[bt_navigator-14] [INFO] [1777876631.902887201] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876631.903598687] [bt_navigator]: Begin navigating from current location (1.16, 3.38) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876632.832252365] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876633.832166754] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876634.832673919] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876635.193455266] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876635.195836600] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876635.203099358] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876635.205073521] [bt_navigator]: Begin navigating from current location (1.21, 3.35) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876636.332125031] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876637.331894805] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876638.501971262] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876638.503403562] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876638.509664833] [bt_navigator]: Received goal preemption request
+[yolo_detector_node-6] [INFO] [1777876638.510101267] [yolo_detector]: Timing window: samples=2, avg_cb=906.7ms, avg_inf=901.8ms
+[bt_navigator-14] [INFO] [1777876638.512099091] [bt_navigator]: Begin navigating from current location (1.16, 3.45) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876638.831691293] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876639.832345977] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876641.332351708] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876642.332272144] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876643.815124312] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876643.821997157] [yolo_detector]: Timing window: samples=1, avg_cb=672.5ms, avg_inf=668.6ms
+[density_map_builder_node-7] [INFO] [1777876643.825402391] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[controller_server-10] [INFO] [1777876643.832120631] [controller_server]: Passing new path to controller.
+[bt_navigator-14] [INFO] [1777876643.902640330] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876643.903623177] [bt_navigator]: Begin navigating from current location (1.14, 3.46) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876644.832345740] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876646.292844467] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876646.294870918] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876646.308786221] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876646.310065556] [bt_navigator]: Begin navigating from current location (1.17, 3.44) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876646.332620636] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876647.257418689] [rviz2]: Trying to create a map of size 146 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876647.336153194] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876647.932621353] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876647.932966589] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876647.938352285] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876648.002814191] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876648.003360202] [bt_navigator]: Begin navigating from current location (1.21, 3.44) to (3.15, 2.15)
+[planner_server-12] [INFO] [1777876648.357897087] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 146 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876648.833134645] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876649.832803868] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876650.431854829] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876650.433170561] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876650.435947562] [yolo_detector]: Timing window: samples=3, avg_cb=799.5ms, avg_inf=792.2ms
+[bt_navigator-14] [INFO] [1777876650.503136385] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876650.504818966] [bt_navigator]: Begin navigating from current location (1.22, 3.50) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876651.334216804] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876652.833945132] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876653.281961398] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876653.283998719] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876653.303023976] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876653.303554586] [bt_navigator]: Begin navigating from current location (1.37, 3.58) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876653.831925828] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876655.005653530] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876655.009912384] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876655.012151097] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876655.103109775] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876655.104449162] [bt_navigator]: Begin navigating from current location (1.45, 3.58) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876655.331801152] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876656.331814691] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876657.228686386] [rviz2]: Trying to create a map of size 147 x 108 using 1 swatches
+[controller_server-10] [INFO] [1777876657.831788253] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876658.358552728] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 147 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876658.836773686] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876659.210014409] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876659.213419429] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876659.216116419] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876659.220859578] [yolo_detector]: Timing window: samples=3, avg_cb=698.3ms, avg_inf=687.8ms
+[bt_navigator-14] [INFO] [1777876659.302982673] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876659.303907566] [bt_navigator]: Begin navigating from current location (1.41, 3.46) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876660.332728754] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876660.501938707] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876660.502857071] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876660.504275524] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876660.603037078] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876660.603603182] [bt_navigator]: Begin navigating from current location (1.39, 3.41) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876661.331910836] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876662.235343108] [rviz2]: Trying to create a map of size 148 x 108 using 1 swatches
+[planner_server-12] [INFO] [1777876662.357591304] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 148 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876662.835049460] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876664.332080263] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876665.332917692] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876665.478271959] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876665.479808191] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876665.485262931] [yolo_detector]: Timing window: samples=2, avg_cb=652.0ms, avg_inf=644.5ms
+[bt_navigator-14] [INFO] [1777876665.502753930] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876665.503784277] [bt_navigator]: Begin navigating from current location (1.38, 3.44) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876666.834341131] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876666.985651582] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876666.989644646] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876667.003359801] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876667.003770606] [bt_navigator]: Begin navigating from current location (1.37, 3.45) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876667.832093840] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876669.331964870] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876670.334012592] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876671.735551478] [yolo_detector]: Published 2 target poses
+[yolo_detector_node-6] [INFO] [1777876671.737137773] [yolo_detector]: Timing window: samples=2, avg_cb=614.4ms, avg_inf=607.2ms
+[density_map_builder_node-7] [INFO] [1777876671.739035440] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876671.746874121] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876671.803427830] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876671.805541453] [bt_navigator]: Begin navigating from current location (1.42, 3.36) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876671.831832979] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876672.255259009] [rviz2]: Trying to create a map of size 149 x 108 using 1 swatches
+[planner_server-12] [INFO] [1777876672.356985622] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 149 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876672.831741728] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876673.569763504] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876673.571868600] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876673.572451635] [yolo_detector]: Published 3 target poses
+[bt_navigator-14] [INFO] [1777876673.603057099] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876673.603846349] [bt_navigator]: Begin navigating from current location (1.52, 3.27) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876674.332199414] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876675.832274970] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876676.836402098] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876677.259356397] [rviz2]: Trying to create a map of size 151 x 108 using 1 swatches
+[density_map_builder_node-7] [INFO] [1777876677.403475539] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876677.407370640] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876677.409787458] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876677.412892492] [yolo_detector]: Timing window: samples=2, avg_cb=758.7ms, avg_inf=745.2ms
+[bt_navigator-14] [INFO] [1777876677.503443851] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876677.504999261] [bt_navigator]: Begin navigating from current location (1.45, 3.19) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876678.332171909] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876678.357070344] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 151 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876679.332426539] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876680.558049636] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876680.563126724] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876680.568480857] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876680.602992154] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876680.603664365] [bt_navigator]: Begin navigating from current location (1.61, 3.21) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876680.831693004] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876681.831800046] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876682.242241447] [rviz2]: Trying to create a map of size 156 x 108 using 1 swatches
+[planner_server-12] [INFO] [1777876682.357304709] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 156 X 108 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876683.335474090] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876683.886274346] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876683.888293254] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876683.889917311] [yolo_detector]: Timing window: samples=2, avg_cb=677.7ms, avg_inf=664.5ms
+[density_map_builder_node-7] [INFO] [1777876683.894890273] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876684.003063605] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876684.003824954] [bt_navigator]: Begin navigating from current location (1.82, 3.22) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876684.331694691] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876685.834189084] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876686.292140473] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876686.296845808] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876686.303560957] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876686.304445925] [bt_navigator]: Begin navigating from current location (1.96, 3.07) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876686.831794857] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876687.216794753] [rviz2]: Trying to create a map of size 160 x 109 using 1 swatches
+[controller_server-10] [INFO] [1777876688.333036125] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876688.359986436] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 160 X 109 at 0.050000 m/pix
+[density_map_builder_node-7] [INFO] [1777876688.731186489] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876688.732599735] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876688.736199798] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876688.803325569] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876688.805825309] [bt_navigator]: Begin navigating from current location (1.87, 2.93) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876689.831991245] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876690.834682614] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876691.006207707] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876691.009135325] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876691.009509937] [yolo_detector]: Timing window: samples=3, avg_cb=729.1ms, avg_inf=721.4ms
+[bt_navigator-14] [INFO] [1777876691.103263994] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876691.103862931] [bt_navigator]: Begin navigating from current location (1.74, 2.80) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876692.333104190] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876692.922070535] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876692.923421637] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876692.926747957] [yolo_detector]: Published 2 target poses
+[bt_navigator-14] [INFO] [1777876693.002997270] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876693.003386069] [bt_navigator]: Begin navigating from current location (1.72, 2.77) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876693.331857772] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876694.832267938] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876695.832138978] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876696.719782582] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876696.727187617] [yolo_detector]: Timing window: samples=2, avg_cb=863.7ms, avg_inf=856.8ms
+[density_map_builder_node-7] [INFO] [1777876696.730614552] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876696.803803161] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876696.804574926] [bt_navigator]: Begin navigating from current location (1.86, 2.81) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876697.331929411] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876698.332445401] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876698.952041569] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876698.952370871] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876699.003076268] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876699.005067363] [bt_navigator]: Begin navigating from current location (1.95, 2.87) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876699.832055729] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876700.594249996] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876700.592716521] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876700.605224233] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876700.605894609] [bt_navigator]: Begin navigating from current location (2.04, 2.89) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876700.831769861] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876702.270026042] [rviz2]: Trying to create a map of size 160 x 113 using 1 swatches
+[controller_server-10] [INFO] [1777876702.331883734] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876702.358650070] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 160 X 113 at 0.050000 m/pix
+[density_map_builder_node-7] [INFO] [1777876702.471124564] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876702.475634109] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[yolo_detector_node-6] [INFO] [1777876702.475363179] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876702.478641418] [yolo_detector]: Timing window: samples=3, avg_cb=729.5ms, avg_inf=716.8ms
+[bt_navigator-14] [INFO] [1777876702.502940931] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876702.503921081] [bt_navigator]: Begin navigating from current location (2.10, 2.91) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876703.331989712] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876704.835108633] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876705.487640860] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876705.489657153] [density_map_builder]: Sent navigation goal to density peak (3.15, 2.15)
+[bt_navigator-14] [INFO] [1777876705.503010991] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876705.504680480] [bt_navigator]: Begin navigating from current location (2.10, 2.77) to (3.15, 2.15)
+[controller_server-10] [INFO] [1777876705.831744231] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876707.232202138] [rviz2]: Trying to create a map of size 173 x 113 using 1 swatches
+[controller_server-10] [INFO] [1777876707.331862650] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876708.357674764] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 173 X 113 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876708.832395279] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876709.832720618] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876711.073910642] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876711.076501422] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.95)
+[yolo_detector_node-6] [INFO] [1777876711.075942478] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876711.077351475] [yolo_detector]: Timing window: samples=2, avg_cb=724.6ms, avg_inf=709.8ms
+[bt_navigator-14] [INFO] [1777876711.102766271] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876711.104592754] [bt_navigator]: Begin navigating from current location (2.27, 2.60) to (4.95, 1.95)
+[controller_server-10] [INFO] [1777876711.332256151] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876712.241267692] [rviz2]: Trying to create a map of size 179 x 114 using 1 swatches
+[controller_server-10] [INFO] [1777876712.332417890] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876712.357441374] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 179 X 114 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876713.835677209] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876714.108468067] [yolo_detector]: Published 4 target poses
+[density_map_builder_node-7] [INFO] [1777876714.109773096] [density_map_builder]: Received 4 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876714.112435635] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.95)
+[bt_navigator-14] [INFO] [1777876714.202811056] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876714.203674818] [bt_navigator]: Begin navigating from current location (2.29, 2.65) to (4.95, 1.95)
+[controller_server-10] [INFO] [1777876715.332464256] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876716.332317592] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876717.303282217] [rviz2]: Trying to create a map of size 179 x 128 using 1 swatches
+[controller_server-10] [INFO] [1777876717.337839533] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876717.344801889] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876717.346306053] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876717.347864650] [yolo_detector]: Timing window: samples=2, avg_cb=596.8ms, avg_inf=587.9ms
+[density_map_builder_node-7] [INFO] [1777876717.349871759] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.95)
+[bt_navigator-14] [INFO] [1777876717.402632559] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876717.403254648] [bt_navigator]: Begin navigating from current location (2.50, 2.53) to (4.95, 1.95)
+[planner_server-12] [INFO] [1777876718.357477113] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 179 X 128 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876718.833854464] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876718.997559283] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876718.998789893] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876719.002248448] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.95)
+[bt_navigator-14] [INFO] [1777876719.004570474] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876719.008026390] [bt_navigator]: Begin navigating from current location (2.48, 2.34) to (4.95, 1.95)
+[controller_server-10] [INFO] [1777876720.332612799] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876721.332732119] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876721.587645489] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876721.596193853] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876721.596533752] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876721.602886449] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876721.603554473] [bt_navigator]: Begin navigating from current location (2.57, 2.21) to (4.95, 1.75)
+[rviz2-18] [INFO] [1777876722.233112843] [rviz2]: Trying to create a map of size 180 x 130 using 1 swatches
+[planner_server-12] [INFO] [1777876722.357284984] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 180 X 130 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876722.832306239] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876723.832091026] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876724.486931253] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876724.489710153] [yolo_detector]: Timing window: samples=3, avg_cb=676.4ms, avg_inf=664.9ms
+[density_map_builder_node-7] [INFO] [1777876724.492646971] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876724.502814213] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876724.504969159] [bt_navigator]: Begin navigating from current location (2.56, 2.34) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876725.332438050] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876726.334030332] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876726.519001050] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876726.529672398] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876726.602975840] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876726.603675623] [bt_navigator]: Begin navigating from current location (2.55, 2.48) to (4.95, 1.75)
+[rviz2-18] [INFO] [1777876727.219921910] [rviz2]: Trying to create a map of size 185 x 136 using 1 swatches
+[controller_server-10] [INFO] [1777876727.832018993] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876728.357169573] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 185 X 136 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876728.833534206] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876730.332086414] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876731.831810897] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876732.833878968] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876733.498458464] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876733.503059154] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876733.504778338] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876733.507096958] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876733.507584714] [bt_navigator]: Begin navigating from current location (2.92, 2.30) to (4.95, 1.75)
+[yolo_detector_node-6] [INFO] [1777876733.510373309] [yolo_detector]: Timing window: samples=2, avg_cb=833.9ms, avg_inf=825.7ms
+[controller_server-10] [INFO] [1777876734.331752173] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876735.332037446] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876736.614980920] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876736.618004490] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876736.703339092] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876736.703727970] [bt_navigator]: Begin navigating from current location (2.83, 2.31) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876736.831745918] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876737.240703183] [rviz2]: Trying to create a map of size 186 x 136 using 1 swatches
+[controller_server-10] [INFO] [1777876737.832076012] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876738.357181257] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 186 X 136 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876739.332437884] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876740.332408889] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876740.514241220] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876740.518548877] [yolo_detector]: Timing window: samples=2, avg_cb=581.5ms, avg_inf=573.2ms
+[density_map_builder_node-7] [INFO] [1777876740.523988638] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876740.602748471] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876740.604715181] [bt_navigator]: Begin navigating from current location (2.94, 2.43) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876741.831916267] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876742.269309405] [rviz2]: Trying to create a map of size 189 x 136 using 1 swatches
+[planner_server-12] [INFO] [1777876742.357888726] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 189 X 136 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876742.834389942] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876743.174317895] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876743.177502506] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876743.203115517] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876743.204477214] [bt_navigator]: Begin navigating from current location (3.05, 2.46) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876744.332531414] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876745.334026308] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876745.497027702] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876745.508313216] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876745.603198513] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876745.603419708] [bt_navigator]: Begin navigating from current location (3.09, 2.43) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876746.832580822] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876747.127361732] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876747.128979692] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876747.131827264] [yolo_detector]: Timing window: samples=3, avg_cb=747.9ms, avg_inf=740.9ms
+[density_map_builder_node-7] [INFO] [1777876747.132309561] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[bt_navigator-14] [INFO] [1777876747.202796996] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876747.203368399] [bt_navigator]: Begin navigating from current location (3.19, 2.45) to (4.95, 1.75)
+[rviz2-18] [INFO] [1777876747.236289953] [rviz2]: Trying to create a map of size 190 x 136 using 1 swatches
+[controller_server-10] [INFO] [1777876748.333352316] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876748.357812168] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 190 X 136 at 0.050000 m/pix
+[yolo_detector_node-6] [INFO] [1777876748.548672124] [yolo_detector]: Published 6 target poses
+[density_map_builder_node-7] [INFO] [1777876748.549097303] [density_map_builder]: Received 6 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876748.556323439] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876748.602804327] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876748.603170187] [bt_navigator]: Begin navigating from current location (3.23, 2.51) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876749.332191449] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876750.831814260] [controller_server]: Passing new path to controller.
+[ball_collector.py-8] [INFO] [1777876751.329367836] [ball_collector]: Collected and removed model: tennis_ball_15
+[controller_server-10] [INFO] [1777876751.834648764] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876753.331808308] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876754.525127745] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876754.529968267] [yolo_detector]: Timing window: samples=2, avg_cb=758.9ms, avg_inf=745.3ms
+[density_map_builder_node-7] [INFO] [1777876754.531329587] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876754.604498528] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876754.605312672] [bt_navigator]: Begin navigating from current location (3.11, 2.33) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876754.832264481] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876755.832257581] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876756.557565385] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876756.565539760] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876756.603320480] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876756.605248311] [bt_navigator]: Begin navigating from current location (3.19, 2.35) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876757.332129433] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876758.331671754] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876759.185354172] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876759.191902511] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876759.202667229] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876759.203557006] [bt_navigator]: Begin navigating from current location (3.38, 2.39) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876759.833429093] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876761.331774862] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876762.287576624] [rviz2]: Trying to create a map of size 193 x 137 using 1 swatches
+[controller_server-10] [INFO] [1777876762.336973211] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876762.358939315] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 193 X 137 at 0.050000 m/pix
+[density_map_builder_node-7] [INFO] [1777876762.529454767] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876762.532320291] [yolo_detector]: Published 3 target poses
+[yolo_detector_node-6] [INFO] [1777876762.537491571] [yolo_detector]: Timing window: samples=3, avg_cb=789.1ms, avg_inf=780.7ms
+[density_map_builder_node-7] [INFO] [1777876762.539162835] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876762.602809719] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876762.605770425] [bt_navigator]: Begin navigating from current location (3.37, 2.52) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876763.833007610] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876764.832230307] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876765.833595527] [controller_server]: Passing new path to controller.
+[ball_collector.py-8] [INFO] [1777876766.283352759] [ball_collector]: Collected and removed model: tennis_ball_10
+[yolo_detector_node-6] [INFO] [1777876766.932550068] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876766.932788549] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876766.940863372] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876767.003822173] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876767.004842622] [bt_navigator]: Begin navigating from current location (3.00, 2.14) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876767.331960646] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876768.833781142] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876769.575098835] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876769.579845675] [yolo_detector]: Timing window: samples=2, avg_cb=727.7ms, avg_inf=718.2ms
+[density_map_builder_node-7] [INFO] [1777876769.579917576] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876769.603801029] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876769.607213900] [bt_navigator]: Begin navigating from current location (3.09, 2.03) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876769.832466198] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876770.831952345] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876771.799351133] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876771.804992596] [density_map_builder]: Sent navigation goal to density peak (4.05, 1.15)
+[bt_navigator-14] [INFO] [1777876771.904865365] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876771.905770919] [bt_navigator]: Begin navigating from current location (3.36, 2.06) to (4.05, 1.15)
+[controller_server-10] [INFO] [1777876772.331805819] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876773.332038386] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876774.831991584] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876775.832085873] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876777.334285351] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876778.334009806] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876778.334292231] [density_map_builder]: Received 4 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876778.344521024] [yolo_detector]: Published 4 target poses
+[yolo_detector_node-6] [INFO] [1777876778.350052578] [yolo_detector]: Timing window: samples=2, avg_cb=744.2ms, avg_inf=730.8ms
+[density_map_builder_node-7] [INFO] [1777876778.350948921] [density_map_builder]: Sent navigation goal to density peak (3.95, 1.05)
+[bt_navigator-14] [INFO] [1777876778.402758268] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876778.404644648] [bt_navigator]: Begin navigating from current location (3.19, 2.08) to (3.95, 1.05)
+[density_map_builder_node-7] [INFO] [1777876779.773628241] [density_map_builder]: Received 5 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876779.777292335] [yolo_detector]: Published 5 target poses
+[density_map_builder_node-7] [INFO] [1777876779.779928964] [density_map_builder]: Sent navigation goal to density peak (3.45, 0.65)
+[bt_navigator-14] [INFO] [1777876779.802863364] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876779.803537542] [bt_navigator]: Begin navigating from current location (3.13, 2.11) to (3.45, 0.65)
+[controller_server-10] [INFO] [1777876779.832011168] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876780.832790847] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876782.332498628] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876783.332102019] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876784.337237855] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876784.677742276] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876784.683664513] [yolo_detector]: Timing window: samples=2, avg_cb=688.2ms, avg_inf=678.7ms
+[density_map_builder_node-7] [INFO] [1777876784.685544262] [density_map_builder]: Sent navigation goal to density peak (3.45, 0.65)
+[bt_navigator-14] [INFO] [1777876784.703452124] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876784.707218357] [bt_navigator]: Begin navigating from current location (3.29, 2.04) to (3.45, 0.65)
+[controller_server-10] [INFO] [1777876785.831817463] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876786.505856275] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876786.514823863] [density_map_builder]: Sent navigation goal to density peak (3.45, 0.65)
+[bt_navigator-14] [INFO] [1777876786.603415725] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876786.606108030] [bt_navigator]: Begin navigating from current location (3.26, 2.06) to (3.45, 0.65)
+[controller_server-10] [INFO] [1777876786.831966097] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876787.298561504] [rviz2]: Trying to create a map of size 193 x 145 using 1 swatches
+[yolo_detector_node-6] [INFO] [1777876787.833215383] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876787.841085582] [density_map_builder]: Sent navigation goal to density peak (3.45, 0.65)
+[bt_navigator-14] [INFO] [1777876787.904249308] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876787.905566429] [bt_navigator]: Begin navigating from current location (3.35, 2.11) to (3.45, 0.65)
+[controller_server-10] [INFO] [1777876788.333141636] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876788.357241464] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 193 X 145 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876789.331811946] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876790.331995650] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876791.832266172] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876792.296248323] [rviz2]: Trying to create a map of size 195 x 145 using 1 swatches
+[planner_server-12] [INFO] [1777876792.357344008] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 195 X 145 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876792.833638908] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876792.873467814] [density_map_builder]: Received 4 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876792.884315792] [density_map_builder]: Sent navigation goal to density peak (3.45, 0.65)
+[yolo_detector_node-6] [INFO] [1777876792.886114692] [yolo_detector]: Published 4 target poses
+[yolo_detector_node-6] [INFO] [1777876792.889304502] [yolo_detector]: Timing window: samples=3, avg_cb=842.6ms, avg_inf=831.3ms
+[bt_navigator-14] [INFO] [1777876792.902741818] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876792.903918195] [bt_navigator]: Begin navigating from current location (3.37, 1.82) to (3.45, 0.65)
+[controller_server-10] [INFO] [1777876794.331873881] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876795.335340498] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876795.797804082] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876795.800449597] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876795.807369645] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.55)
+[bt_navigator-14] [INFO] [1777876795.903212500] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876795.904597005] [bt_navigator]: Begin navigating from current location (3.24, 1.59) to (3.35, 0.55)
+[controller_server-10] [INFO] [1777876796.833407567] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876797.426386704] [density_map_builder]: Received 2 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876797.433105395] [yolo_detector]: Published 2 target poses
+[density_map_builder_node-7] [INFO] [1777876797.435512165] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.45)
+[bt_navigator-14] [INFO] [1777876797.502888237] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876797.503690929] [bt_navigator]: Begin navigating from current location (3.30, 1.52) to (3.35, 0.45)
+[controller_server-10] [INFO] [1777876797.834379303] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876799.334627095] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876799.809576495] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876799.812137637] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876799.813153968] [yolo_detector]: Timing window: samples=3, avg_cb=656.0ms, avg_inf=645.3ms
+[density_map_builder_node-7] [INFO] [1777876799.816435155] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.45)
+[bt_navigator-14] [INFO] [1777876799.903537724] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876799.906039204] [bt_navigator]: Begin navigating from current location (3.42, 1.54) to (3.35, 0.45)
+[controller_server-10] [INFO] [1777876800.831839130] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876801.832679721] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876802.332292207] [rviz2]: Trying to create a map of size 198 x 145 using 1 swatches
+[planner_server-12] [INFO] [1777876802.360037670] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 198 X 145 at 0.050000 m/pix
+[yolo_detector_node-6] [INFO] [1777876802.427489520] [yolo_detector]: Published 3 target poses
+[density_map_builder_node-7] [INFO] [1777876802.430210667] [density_map_builder]: Received 3 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876802.432464874] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[bt_navigator-14] [INFO] [1777876802.502935624] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876802.503568089] [bt_navigator]: Begin navigating from current location (3.40, 1.55) to (3.35, 0.35)
+[ball_collector.py-8] [INFO] [1777876803.199804299] [ball_collector]: Collected and removed model: tennis_ball_14
+[controller_server-10] [INFO] [1777876803.332870133] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876804.332660358] [controller_server]: Passing new path to controller.
+[ball_collector.py-8] [INFO] [1777876805.222134859] [ball_collector]: Collected and removed model: tennis_ball_19
+[density_map_builder_node-7] [INFO] [1777876805.425731274] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876805.428153778] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876805.437980203] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[yolo_detector_node-6] [INFO] [1777876805.437747477] [yolo_detector]: Timing window: samples=2, avg_cb=761.3ms, avg_inf=751.6ms
+[bt_navigator-14] [INFO] [1777876805.502903543] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876805.503754969] [bt_navigator]: Begin navigating from current location (3.39, 1.46) to (3.35, 0.35)
+[controller_server-10] [INFO] [1777876805.832151127] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876806.831738849] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876807.272920387] [rviz2]: Trying to create a map of size 201 x 145 using 1 swatches
+[density_map_builder_node-7] [INFO] [1777876808.048977098] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876808.052802103] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876808.058536799] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[bt_navigator-14] [INFO] [1777876808.103134026] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876808.104803496] [bt_navigator]: Begin navigating from current location (3.29, 1.43) to (3.35, 0.35)
+[controller_server-10] [INFO] [1777876808.332907313] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876808.357149169] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 201 X 145 at 0.050000 m/pix
+[ball_collector.py-8] [INFO] [1777876809.322150000] [ball_collector]: Collected and removed model: tennis_ball_18
+[controller_server-10] [INFO] [1777876809.332277462] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876810.831806392] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876811.834755314] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876813.333407166] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876814.332277828] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876814.501122563] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876814.503164145] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[yolo_detector_node-6] [INFO] [1777876814.502501656] [yolo_detector]: Timing window: samples=2, avg_cb=912.6ms, avg_inf=906.0ms
+[bt_navigator-14] [INFO] [1777876814.604138680] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876814.605717794] [bt_navigator]: Begin navigating from current location (3.52, 1.48) to (3.35, 0.35)
+[controller_server-10] [INFO] [1777876815.831729130] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876816.685007769] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876816.687556025] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[bt_navigator-14] [INFO] [1777876816.703986244] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876816.704501574] [bt_navigator]: Begin navigating from current location (3.48, 1.28) to (3.35, 0.35)
+[controller_server-10] [INFO] [1777876816.832020558] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876818.332080851] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876819.334598875] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876819.824658508] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876819.826739420] [density_map_builder]: Sent navigation goal to density peak (3.35, 0.35)
+[yolo_detector_node-6] [INFO] [1777876819.829396446] [yolo_detector]: Timing window: samples=2, avg_cb=739.4ms, avg_inf=731.9ms
+[controller_server-10] [INFO] [1777876819.850674922] [controller_server]: Reached the goal!
+[bt_navigator-14] [INFO] [1777876819.902902505] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876819.906367356] [bt_navigator]: Begin navigating from current location (3.22, 1.04) to (3.35, 0.35)
+[bt_navigator-14] [INFO] [1777876820.204381546] [bt_navigator]: Goal succeeded
+[density_map_builder_node-7] [WARN] [1777876820.205036891] [density_map_builder]: Fake success detected (dist 0.71 m). Clearing unreachable density peak.
+[density_map_builder_node-7] [INFO] [1777876822.543372125] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876822.545355429] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.75)
+[yolo_detector_node-6] [INFO] [1777876822.550291058] [yolo_detector]: Published 1 target poses
+[bt_navigator-14] [INFO] [1777876822.550638324] [bt_navigator]: Begin navigating from current location (3.18, 1.14) to (4.95, 1.75)
+[controller_server-10] [INFO] [1777876822.752209562] [controller_server]: Received a goal, begin computing control effort.
+[density_map_builder_node-7] [INFO] [1777876823.905551908] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876823.916503680] [yolo_detector]: Published 1 target poses
+[controller_server-10] [INFO] [1777876824.253004652] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876825.254075495] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876825.531052621] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876825.533605994] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876825.539601567] [yolo_detector]: Timing window: samples=3, avg_cb=817.8ms, avg_inf=803.6ms
+[controller_server-10] [INFO] [1777876826.753084332] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876827.754475734] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876828.010788586] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876828.016406076] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[controller_server-10] [INFO] [1777876829.252631991] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876830.752682121] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876831.224788381] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876831.226279424] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876831.228687110] [yolo_detector]: Timing window: samples=2, avg_cb=844.6ms, avg_inf=837.5ms
+[controller_server-10] [INFO] [1777876831.753169180] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876833.252664187] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876834.252560618] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876834.494035962] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876834.494406304] [yolo_detector]: Published 1 target poses
+[controller_server-10] [INFO] [1777876835.752823603] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876836.759014616] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876836.856378062] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876836.860304179] [yolo_detector]: Timing window: samples=2, avg_cb=902.8ms, avg_inf=894.8ms
+[density_map_builder_node-7] [INFO] [1777876836.858481047] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[controller_server-10] [INFO] [1777876838.253172671] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876838.572678574] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876838.574064506] [yolo_detector]: Published 1 target poses
+[controller_server-10] [INFO] [1777876839.252781434] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876840.252911112] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876841.753023768] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876843.255281266] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876843.259036138] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876843.260313791] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876843.262181179] [yolo_detector]: Timing window: samples=2, avg_cb=920.3ms, avg_inf=909.0ms
+[controller_server-10] [INFO] [1777876844.253204973] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876845.753031160] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876846.753008567] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876848.252730324] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876849.252989975] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876850.252740870] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876851.752974142] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876853.254553806] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876854.252726544] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876855.752571109] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876856.630251392] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876856.636771641] [yolo_detector]: Timing window: samples=1, avg_cb=704.1ms, avg_inf=694.5ms
+[controller_server-10] [INFO] [1777876856.752813806] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876858.253538971] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876859.037851632] [yolo_detector]: Published 0 target poses
+[controller_server-10] [INFO] [1777876859.253043206] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876860.253982635] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876861.753056759] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876863.256374270] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876863.811633083] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876863.818633858] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876863.822148376] [yolo_detector]: Timing window: samples=2, avg_cb=664.0ms, avg_inf=655.5ms
+[controller_server-10] [INFO] [1777876864.253648830] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876865.753596195] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876866.752939773] [controller_server]: Passing new path to controller.
+[rviz2-18] [INFO] [1777876867.274804993] [rviz2]: Trying to create a map of size 206 x 145 using 1 swatches
+[density_map_builder_node-7] [INFO] [1777876868.060635421] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876868.068792597] [yolo_detector]: Published 1 target poses
+[controller_server-10] [INFO] [1777876868.252547809] [controller_server]: Passing new path to controller.
+[planner_server-12] [INFO] [1777876868.357112161] [global_costmap.global_costmap]: StaticLayer: Resizing static layer to 206 X 145 at 0.050000 m/pix
+[controller_server-10] [INFO] [1777876869.253092776] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876870.753484602] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876871.157029050] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876871.160928523] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876871.161567489] [yolo_detector]: Timing window: samples=2, avg_cb=860.8ms, avg_inf=850.3ms
+[controller_server-10] [INFO] [1777876871.753224443] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876872.857301291] [yolo_detector]: Published 0 target poses
+[controller_server-10] [INFO] [1777876873.256196517] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876874.253280635] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876875.358918538] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876875.364000636] [yolo_detector]: Published 1 target poses
+[controller_server-10] [INFO] [1777876875.753016181] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876876.753255124] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876876.806321453] [controller_server]: Reached the goal!
+[yolo_detector_node-6] [INFO] [1777876876.963178457] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1777876876.966321821] [yolo_detector]: Timing window: samples=3, avg_cb=918.6ms, avg_inf=908.1ms
+[bt_navigator-14] [INFO] [1777876877.151824126] [bt_navigator]: Goal succeeded
+[density_map_builder_node-7] [WARN] [1777876877.152823812] [density_map_builder]: Fake success detected (dist 0.66 m). Clearing unreachable density peak.
+[density_map_builder_node-7] [INFO] [1777876879.182350662] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[yolo_detector_node-6] [INFO] [1777876879.186582025] [yolo_detector]: Published 1 target poses
+[density_map_builder_node-7] [INFO] [1777876879.190131208] [density_map_builder]: Sent navigation goal to density peak (3.15, 1.95)
+[bt_navigator-14] [INFO] [1777876879.192041056] [bt_navigator]: Begin navigating from current location (4.26, 1.93) to (3.15, 1.95)
+[controller_server-10] [INFO] [1777876879.394574821] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-10] [INFO] [1777876880.895720978] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876881.895896579] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876883.396625199] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876884.396228363] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876884.607780297] [density_map_builder]: Received 1 balls from camera_depth_optical_frame frame
+[density_map_builder_node-7] [INFO] [1777876884.610104956] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.85)
+[yolo_detector_node-6] [INFO] [1777876884.609405200] [yolo_detector]: Published 1 target poses
+[yolo_detector_node-6] [INFO] [1777876884.615544953] [yolo_detector]: Timing window: samples=2, avg_cb=738.1ms, avg_inf=727.6ms
+[bt_navigator-14] [INFO] [1777876884.693033318] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876884.693541612] [bt_navigator]: Begin navigating from current location (4.24, 1.88) to (4.95, 1.85)
+[controller_server-10] [INFO] [1777876885.895822547] [controller_server]: Passing new path to controller.
+[async_slam_toolbox_node-9] [INFO] [1777876886.143585786] [slam_toolbox]: Message Filter dropping message: frame 'base_scan' at time 77.220 for reason 'discarding message because the queue is full'
+[controller_server-10] [INFO] [1777876887.395955549] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876888.396939857] [controller_server]: Passing new path to controller.
+[density_map_builder_node-7] [INFO] [1777876888.903050365] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.85)
+[yolo_detector_node-6] [INFO] [1777876888.903894246] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876888.993143805] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876888.995266180] [bt_navigator]: Begin navigating from current location (4.25, 1.92) to (4.95, 1.85)
+[controller_server-10] [INFO] [1777876889.895668184] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876890.895764790] [controller_server]: Passing new path to controller.
+[yolo_detector_node-6] [INFO] [1777876892.096471931] [yolo_detector]: Published 0 target poses
+[density_map_builder_node-7] [INFO] [1777876892.097223609] [density_map_builder]: Sent navigation goal to density peak (4.95, 1.85)
+[yolo_detector_node-6] [INFO] [1777876892.101690036] [yolo_detector]: Timing window: samples=2, avg_cb=920.1ms, avg_inf=912.2ms
+[bt_navigator-14] [INFO] [1777876892.193019081] [bt_navigator]: Received goal preemption request
+[bt_navigator-14] [INFO] [1777876892.193857015] [bt_navigator]: Begin navigating from current location (4.25, 2.08) to (4.95, 1.85)
+[controller_server-10] [INFO] [1777876892.395973746] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876893.396113583] [controller_server]: Passing new path to controller.
+[controller_server-10] [INFO] [1777876894.418208361] [controller_server]: Reached the goal!
+[controller_server-10] [INFO] [1777876894.593894553] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-10] [INFO] [1777876894.610007941] [controller_server]: Reached the goal!
+[bt_navigator-14] [INFO] [1777876894.994304538] [bt_navigator]: Goal succeeded
+[density_map_builder_node-7] [WARN] [1777876894.994646454] [density_map_builder]: Fake success detected (dist 0.66 m). Clearing unreachable density peak.
+[density_map_builder_node-7] [INFO] [1777876896.706548105] [density_map_builder]: Sent navigation goal to density peak (3.15, 1.95)
+[yolo_detector_node-6] [INFO] [1777876896.707592820] [yolo_detector]: Published 0 target poses
+[bt_navigator-14] [INFO] [1777876896.710666908] [bt_navigator]: Begin navigating from current location (4.38, 2.16) to (3.15, 1.95)
+[controller_server-10] [INFO] [1777876896.913979207] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-10] [INFO] [1777876898.415141263] [controller_server]: Passing new path to controller.

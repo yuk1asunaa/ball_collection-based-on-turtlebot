@@ -201,16 +201,16 @@ Requirement: RGB, Depth, CameraInfo are actively published and consumed by YOLO.
 
 Current expected topics in this repo:
 
-- RGB: `/camera/image_raw`
+- RGB: `/depth_camera/image_raw`
 - Depth: `/depth_camera/depth/image_raw`
-- CameraInfo: `/camera/camera_info`
+- CameraInfo: `/depth_camera/camera_info`
 
 Commands:
 
 ```bash
-ros2 topic info /camera/image_raw
+ros2 topic info /depth_camera/image_raw
 ros2 topic info /depth_camera/depth/image_raw
-ros2 topic info /camera/camera_info
+ros2 topic info /depth_camera/camera_info
 ros2 node info /yolo_detector
 ```
 
@@ -222,7 +222,7 @@ Pass criteria:
 Evidence to save:
 
 - Topic info outputs and node subscription list.
-/camera/image_raw
+/depth_camera/image_raw
 Type: sensor_msgs/msg/Image
 Publisher count: 1
 Subscription count: 1
@@ -232,15 +232,15 @@ Type: sensor_msgs/msg/Image
 Publisher count: 1
 Subscription count: 1
 
-camera/camera_info
+/depth_camera/camera_info
 Type: sensor_msgs/msg/CameraInfo
 Publisher count: 1
 Subscription count: 1
 
 /yolo_detector
   Subscribers:
-    /camera/camera_info: sensor_msgs/msg/CameraInfo
-    /camera/image_raw: sensor_msgs/msg/Image
+    /depth_camera/camera_info: sensor_msgs/msg/CameraInfo
+    /depth_camera/image_raw: sensor_msgs/msg/Image
     /clock: rosgraph_msgs/msg/Clock
     /depth_camera/depth/image_raw: sensor_msgs/msg/Image
   Publishers:
@@ -349,12 +349,14 @@ ros2 topic echo /cmd_vel --once
 ros2 topic hz /cmd_vel
 ros2 action list
 ros2 action info /navigate_to_pose
+ros2 param get /planner_server planner_plugins
 ```
 
 Pass criteria:
 
 - Nav action server is available in full-system mode.
 - `/cmd_vel` is finite and behavior matches planning logic.
+- `planner_plugins` contains `GridBased`.
 
 Evidence to save:
 - Action info and `/cmd_vel` samples.

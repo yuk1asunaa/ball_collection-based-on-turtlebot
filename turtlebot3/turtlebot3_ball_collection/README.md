@@ -1,69 +1,76 @@
 # TurtleBot3 Ball Collection Package
 
-This package implements an complete ball collection system for TurtleBot3 robots using  YOLOv11 neural network for real-time multi-target detection, combined with SLAM spatial coordinate projection to build a target density cost map. It employs a heuristic priority path planning algorithm based on Gaussian distribution and time decay, and uses an improved A\* planner to guide the robot for efficient collection.
+This package implements ball collection for TurtleBot3 in simulation with YOLO detection, density-map perception, and Nav2 navigation.
 
 ## Features
 
-- Detects balls using YOLO and converts 2D pixel coordinates to 3D world coordinates
-- Builds a dynamic density map with Gaussian distribution and time decay
-- Identifies high-density areas automatically
-- Navigates to high-density areas to maximize ball collection efficiency
+- YOLO-based multi-target detection from RGB-D topics.
+- Gaussian density map construction with time decay.
+- Density-aware global planning through a custom Nav2 planner plugin.
+- Automatic goal dispatch to `/navigate_to_pose`.
 
-## Architecture
+## Runtime Architecture
 
-1. **Detection Layer**: YOLOv11 processes RGB-D images to detect balls in 3D space
-2. **Perception Layer**: Transforms detections to map coordinates and builds density cost map
-4. **Execution Layer**: Nav2 integration for autonomous navigation and collection
+1. `yolo_detector_node`
+- Subscribes camera streams and publishes `/vision/target_poses`.
 
-##
+2. `density_map_builder_node`
+- Subscribes `/vision/target_poses`.
+- Builds and publishes `/density_map` and `/visualization/density_markers`.
+- Sends target goals to Nav2 (`/navigate_to_pose`).
 
-## Topics 
+3. Nav2 `planner_server`
+- Uses planner ID `GridBased`.
+- `GridBased` maps to custom plugin `turtlebot3_ball_collection/GridBased`.
+- Plugin implementation class: `turtlebot3_ball_collection::DensityAwareAStarPlanner`.
+
+## Topics
+
+- YOLO input topics (from `launch/ball_collection.launch.py`):
+   - `/depth_camera/image_raw`
+   - `/depth_camera/depth/image_raw`
+   - `/depth_camera/camera_info`
+- Vision output:
+   - `/vision/target_poses` (`geometry_msgs/msg/PoseArray`)
+- Density outputs:
+   - `/density_map` (`nav_msgs/msg/OccupancyGrid`)
+   - `/visualization/density_markers` (`visualization_msgs/msg/MarkerArray`)
 
 ## Dependencies
 
-- ROS2 Humble
+- ROS 2 Humble
 - Nav2
-- ultralytics (YOLOv11)
-- OpenCV
-- cv\_bridge
+- `ultralytics`
+- `opencv`
+- `cv_bridge`
 
 ## Usage
 
-1. Set environment variables:
-   ```bash
-   export TURTLEBOT3_MODEL=waffle
-   source install/setup.bash
-   ```
-1. Launch the system:
-   ```bash
-   ros2 launch turtlebot3_ball_collection full_system.launch.py
-   
-   ros2 run teleop_twist_keyboard teleop_twist_keyboard
-   ```
+1. Prepare environment:
 
+```bash
+export TURTLEBOT3_MODEL=waffle
+source /opt/ros/humble/setup.bash
+source /home/u22/turtlebot/install/setup.bash
+ros2 launch turtlebot3_ball_collection full_system.launch.py
+```
 
-2. The robot will automatically detect balls using YOLO, build density maps, plan optimal collection paths, and navigate to targets.
+2. Launch full system:
 
-## Algorithm Details
+```bash
+ros2 launch turtlebot3_ball_collection full_system.launch.py 2>&1 | tee test.log
+```
 
-### Density Cost Map
+3. Optional manual teleop:
 
-- &#x20;rotate once after startup.
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
 
-* Converts YOLO 3D detections to occupancy grid
-* Higher density regions have lower costs
-* Enables potential field-based path planning
+4. Stop stack quickly:
 
-### Potential Field A\*
-
-- Combines traditional A\* with potential field costs
-- Prioritizes paths through high-density regions
-- Generates smooth, efficient trajectories
-
-## Performance
-
-- **Detection**: Real-time multi-target detection with YOLOv11
-- **Planning**: Efficient density-aware path optimization
-- **Navigation**: Seamless Nav2 integration
-- **Scalability**: Handles dynamic environments and multiple targets
+```bash
+pkill -f 'ros2 launch|gzserver|gazebo|rviz2|slam_toolbox|nav2|yolo'
+```
+sudo rm -rf /dev/shm/fastrtps*
 

@@ -12,7 +12,7 @@ slam_toolbox:
     # ROS Parameters
     odom_frame: odom
     map_frame: map
-    base_frame: base_footprint
+    base_frame: base_link
     scan_topic: /scan
     mode: mapping # localizing
 
@@ -23,12 +23,14 @@ slam_toolbox:
     # General Parameters
     debug_logging: false
     throttle_scans: 1
-    transform_publish_period: 0.02 #if 0 never publishes odometry
+    transform_publish_period: 0.1 #if 0 never publishes odometry
     map_update_interval: 5.0
     resolution: 0.05
-    max_laser_range: 20.0 #for rastering images
-    minimum_time_interval: 0.5
-    transform_timeout: 0.2
+    min_laser_range: 0.05
+    max_laser_range: 3.5 # match turtlebot3 simulated lidar range
+    minimum_time_interval: 0.2
+    transform_timeout: 2.0
+    message_queue_size: 20
     tf_buffer_duration: 30.
     stack_size_to_use: 40000000 #// program needs a larger stack size to serialize large maps
     enable_interactive_mode: true
@@ -36,18 +38,18 @@ slam_toolbox:
     # Sensors For Parameters
     use_scan_matching: true
     use_scan_barycenter: true
-    minimum_travel_distance: 0.1  # 降低阈值，更频繁匹配
-    minimum_travel_heading: 0.1   # 降低阈值
+    minimum_travel_distance: 0.1
+    minimum_travel_heading: 0.1   
     scan_buffer_size: 10
     scan_buffer_maximum_scan_distance: 10.0
-    link_match_minimum_response_fine: 0.05  # 降低匹配阈值
+    link_match_minimum_response_fine: 0.05
     link_scan_maximum_distance: 1.5
     loop_search_maximum_distance: 3.0
     do_loop_closing: true
     loop_match_minimum_chain_size: 10
-    loop_match_maximum_variance_coarse: 1.0  # 降低方差阈值
-    loop_match_minimum_response_coarse: 0.2  # 降低响应阈值
-    loop_match_minimum_response_fine: 0.3   # 降低响应阈值
+    loop_match_maximum_variance_coarse: 1.0
+    loop_match_minimum_response_coarse: 0.2
+    loop_match_minimum_response_fine: 0.3
 
     # Correlation Parameters - Correlation Parameters
     correlation_search_space_dimension: 0.5

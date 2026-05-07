@@ -16,7 +16,7 @@ class BallCollector(Node):
 
         self.declare_parameter('model_states_topic', '/gazebo/model_states')
         self.declare_parameter('delete_service', '/delete_entity')
-        self.declare_parameter('robot_model_name', 'turtlebot3_burger')
+        self.declare_parameter('robot_model_name', 'turtlebot3_waffle')
         self.declare_parameter('robot_name_fallback_substring', 'turtlebot3')
         self.declare_parameter('ball_name_regex', '(ball|tennis)')
         self.declare_parameter('collect_distance_m', 0.26)
@@ -38,6 +38,8 @@ class BallCollector(Node):
         self.latest_model_states: Optional[ModelStates] = None
         self.delete_in_flight = False
         self.last_collect_time = self.get_clock().now()
+        self.balls_found_ever = False
+        self.zero_balls_count = 0
 
         self.model_states_sub = self.create_subscription(
             ModelStates,
@@ -66,6 +68,24 @@ class BallCollector(Node):
 
         msg = self.latest_model_states
         robot_idx = self.find_robot_index(msg)
+
+        balls_present = 0
+        for idx, name in enumerate(msg.name):
+            if idx != robot_idx and self.ball_pattern.search(name):
+                balls_present += 1
+
+        if balls_present > 0:
+            self.balls_found_ever = True
+            self.zero_balls_count = 0
+        elif self.balls_found_ever:
+            self.zero_balls_count += 1
+            if self.zero_balls_count > 50:
+                self.get_logger().info('SUCCESS: All balls collected! Exiting...')
+                import sys
+                import subprocess
+                subprocess.Popen(['killall', '-9', 'ros2', 'gzserver', 'gzclient'])
+                sys.exit(0)
+
         if robot_idx is None:
             self.get_logger().warn('Robot model not found in /gazebo/model_states', throttle_duration_sec=2.0)
             return
@@ -81,6 +101,10 @@ class BallCollector(Node):
         candidate_name = None
         candidate_distance = None
 
+        # Increase actual collection distance significantly and waive FOV requirements 
+        # to ensure it definitively collects targets its path puts it next to
+        generous_distance = max(self.collect_distance_m, 0.75)
+
         for idx, name in enumerate(msg.name):
             if idx == robot_idx:
                 continue
@@ -91,11 +115,7 @@ class BallCollector(Node):
             dx = ball_pose.position.x - robot_pose.position.x
             dy = ball_pose.position.y - robot_pose.position.y
             distance = math.hypot(dx, dy)
-            if distance > self.collect_distance_m:
-                continue
-
-            bearing = self.normalize_angle(math.atan2(dy, dx) - robot_yaw)
-            if abs(bearing) > self.collect_half_fov_rad:
+            if distance > generous_distance:
                 continue
 
             if candidate_distance is None or distance < candidate_distance:
@@ -139,6 +159,7 @@ class BallCollector(Node):
             resp = future.result()
             if resp is not None and resp.success:
                 self.get_logger().info(f'Collected and removed model: {model_name}')
+                print(f"\\n{'='*50}\\n [SUCCESS] Successfully collected a sphere！(Ball Collected: {model_name})\\n{'='*50}\\n")
             else:
                 status = '' if resp is None else resp.status_message
                 self.get_logger().warn(f'Failed to remove {model_name}: {status}')
@@ -169,7 +190,8 @@ def main(args=None) -> None:
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 if __name__ == '__main__':

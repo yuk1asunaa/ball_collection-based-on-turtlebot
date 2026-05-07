@@ -6,7 +6,7 @@ amcl:
     alpha3: 0.2
     alpha4: 0.2
     alpha5: 0.2
-    base_frame_id: "base_footprint"
+    base_frame_id: "base_link"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
     beam_skip_threshold: 0.3
@@ -30,7 +30,7 @@ amcl:
     save_pose_rate: 0.5
     sigma_hit: 0.2
     tf_broadcast: true
-    transform_tolerance: 1.0
+    transform_tolerance: 5.0
     update_min_a: 0.2
     update_min_d: 0.25
     z_hit: 0.5
@@ -50,11 +50,12 @@ amcl_rclcpp_node:
 bt_navigator:
   ros__parameters:
     use_sim_time: True
+    transform_tolerance: 5.0
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /odom
     default_bt_xml_filename: "navigate_w_replanning_and_recovery.xml"
-    bt_loop_duration: 10
+    bt_loop_duration: 100
     default_server_timeout: 20
     enable_groot_monitoring: True
     groot_zmq_publisher_port: 1666
@@ -99,7 +100,8 @@ bt_navigator_rclcpp_node:
 controller_server:
   ros__parameters:
     use_sim_time: True
-    controller_frequency: 10.0
+    transform_tolerance: 5.0
+    controller_frequency: 2.0
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
     min_theta_velocity_threshold: 0.001
@@ -117,8 +119,8 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.40
+      yaw_goal_tolerance: 3.15
 
     # DWB parameters
     FollowPath:
@@ -146,7 +148,7 @@ controller_server:
       sim_time: 2.0
       linear_granularity: 0.05
       angular_granularity: 0.025
-      transform_tolerance: 0.2
+      transform_tolerance: 5.0
       xy_goal_tolerance: 0.05
       trans_stopped_velocity: 0.25
       short_circuit_trajectory_evaluation: True
@@ -170,8 +172,9 @@ controller_server_rclcpp_node:
 local_costmap:
   local_costmap:
     ros__parameters:
-      update_frequency: 5.0
-      publish_frequency: 2.0
+      transform_tolerance: 5.0
+      update_frequency: 2.0
+      publish_frequency: 1.0
       global_frame: odom
       robot_base_frame: base_link
       use_sim_time: True
@@ -179,6 +182,8 @@ local_costmap:
       width: 3
       height: 3
       resolution: 0.05
+      transform_tolerance: 5.0
+      footprint: "[[0.105, 0.105], [0.105, -0.105], [-0.105, -0.105], [-0.105, 0.105]]"
       robot_radius: 0.22
       plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
       inflation_layer:
@@ -228,11 +233,15 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      transform_tolerance: 5.0
+      update_frequency: 0.5
+      publish_frequency: 0.5
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: True
+      rolling_window: true
+      width: 30
+      height: 30
       robot_radius: 0.22
       resolution: 0.05
       track_unknown_space: true
@@ -301,34 +310,36 @@ map_saver:
 
 planner_server:
   ros__parameters:
-    expected_planner_frequency: 20.0
+    expected_planner_frequency: 2.0
     use_sim_time: True
     planner_plugins: ["GridBased"]
     GridBased:
-      plugin: "nav2_navfn_planner/NavfnPlanner"
-      tolerance: 0.5
-      use_astar: false
-      allow_unknown: true
+      plugin: "turtlebot3_ball_collection/GridBased"
+      obstacle_weight: 1.2
+      density_weight: 0.7
+      min_step_cost: 0.11
+      unknown_cost_penalty: 1.5
+      density_topic: "/density_map"
 
 planner_server_rclcpp_node:
   ros__parameters:
     use_sim_time: True
 
-recoveries_server:
+behavior_server:
   ros__parameters:
     costmap_topic: local_costmap/costmap_raw
     footprint_topic: local_costmap/published_footprint
-    cycle_frequency: 10.0
-    recovery_plugins: ["spin", "backup", "wait"]
+    cycle_frequency: 2.0
+    behavior_plugins: ["spin", "backup", "wait"]
     spin:
-      plugin: "nav2_recoveries/Spin"
+      plugin: "nav2_behaviors/Spin"
     backup:
-      plugin: "nav2_recoveries/BackUp"
+      plugin: "nav2_behaviors/BackUp"
     wait:
-      plugin: "nav2_recoveries/Wait"
+      plugin: "nav2_behaviors/Wait"
     global_frame: odom
     robot_base_frame: base_link
-    transform_timeout: 0.1
+    transform_timeout: 1.0
     use_sim_time: true
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0

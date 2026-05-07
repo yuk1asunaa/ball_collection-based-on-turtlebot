@@ -64,7 +64,7 @@ def main() -> None:
     node = rclpy.create_node('spawn_random_tennis_balls')
 
     client = node.create_client(SpawnEntity, '/spawn_entity')
-    if not client.wait_for_service(timeout_sec=20.0):
+    if not client.wait_for_service(timeout_sec=120.0):
         node.get_logger().error('Service /spawn_entity not available')
         node.destroy_node()
         rclpy.shutdown()

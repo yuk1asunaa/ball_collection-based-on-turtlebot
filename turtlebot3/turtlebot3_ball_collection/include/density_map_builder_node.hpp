@@ -19,6 +19,7 @@ public:
 
 private:
   void target_poses_callback(const geometry_msgs::msg::PoseArray::SharedPtr msg);
+  void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
   void build_density_map(const std::vector<geometry_msgs::msg::Point>& points);
   void publish_density_map();
   void send_peak_navigation_goal();
@@ -38,6 +39,8 @@ private:
     std::shared_ptr<std_srvs::srv::Trigger::Response> response);
 
   rclcpp::Subscription<geometry_msgs::msg::PoseArray>::SharedPtr target_poses_sub_;
+  rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
+  nav_msgs::msg::OccupancyGrid::SharedPtr latest_map_;
   rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr density_map_pub_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
   rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr nav_client_;
@@ -64,8 +67,11 @@ private:
   double lost_target_timeout_sec_;
   double spin_angle_rad_;
   double spin_cooldown_sec_;
+  bool enable_lost_target_spin_{false};
   bool startup_spin_triggered_{false};
   bool spin_in_progress_{false};
+  bool nav_in_progress_{false};
+  bool has_seen_detection_{false};
   rclcpp::Time last_detection_time_;
   rclcpp::Time last_spin_time_;
   geometry_msgs::msg::Point last_goal_point_;

@@ -1,6 +1,13 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="tennis_court_world">
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+        <remapping>model_states:=model_states</remapping>
+      </ros>
+      <update_rate>20.0</update_rate>
+    </plugin>
     
     <include>
       <uri>model://sun</uri>
@@ -15,7 +22,7 @@
 
     <physics type="ode">
       <max_step_size>0.01</max_step_size>
-      <real_time_update_rate>100.0</real_time_update_rate>
+      <real_time_update_rate>25.0</real_time_update_rate>
       <real_time_factor>1</real_time_factor>
     </physics>
 

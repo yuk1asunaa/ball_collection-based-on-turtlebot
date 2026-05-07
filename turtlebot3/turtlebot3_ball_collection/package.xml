@@ -21,7 +21,11 @@
   <depend>tf2</depend>
   <depend>tf2_ros</depend>
   <depend>nav2_msgs</depend>
+  <depend>nav2_core</depend>
+  <depend>nav2_costmap_2d</depend>
+  <depend>nav2_util</depend>
   <depend>rclcpp_action</depend>
+  <depend>pluginlib</depend>
   <depend>pcl_conversions</depend>
   <depend>pcl_ros</depend>
   <depend>slam_toolbox</depend>
@@ -31,5 +35,6 @@
 
   <export>
     <build_type>ament_cmake</build_type>
+    <nav2_core plugin="${prefix}/density_aware_astar_planner_plugin.xml"/>
   </export>
 </package>

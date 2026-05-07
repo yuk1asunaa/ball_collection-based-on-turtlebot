@@ -12,6 +12,9 @@ from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition
 
 def generate_launch_description():
+    # This pipeline depends on RGB-D topics provided by turtlebot3_waffle model.
+    os.environ['TURTLEBOT3_MODEL'] = 'waffle'
+
     turtlebot3_gazebo_dir = get_package_share_directory('turtlebot3_gazebo')
     turtlebot3_ball_collection_dir = get_package_share_directory('turtlebot3_ball_collection')
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -48,7 +51,8 @@ def generate_launch_description():
             os.path.join(turtlebot3_ball_collection_dir, 'launch', 'slam_navigation.launch.py')
         ),
         launch_arguments={
-            'use_sim_time': use_sim_time
+            'use_sim_time': use_sim_time,
+            'launch_rviz': LaunchConfiguration('gui')
         }.items(),
         condition=IfCondition(LaunchConfiguration('use_slam'))
     )
@@ -83,7 +87,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'y_pose',
-            default_value='0.0',
+            default_value='3.0',
             description='Robot spawn y position'
         ),
         DeclareLaunchArgument(
