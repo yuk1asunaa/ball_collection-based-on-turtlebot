@@ -6,8 +6,16 @@ This checklist defines what "project complete" means for this repository and pro
 
 - Workspace root: `/home/u22/turtlebot`
 - Main launch: `turtlebot3_ball_collection/launch/full_system.launch.py`
-- Minimal world launch: `turtlebot3_gazebo/launch/turtlebot3_world.launch.py`
-- Vision launch: `turtlebot3_ball_collection/launch/ball_collection.launch.py`
+
+## Architecture Summary
+
+The system follows a three-layer architecture:
+
+- Perception: Camera to YOLO to DensityMapBuilder, outputting density map and peaks. BallCollector feeds back collected positions via `/ball_collected`.
+- Decision: MissionController runs a Behavior Tree that selects targets, triggers exploration, and sends navigation goals.
+- Execution: Nav2 with DensityAwareAStarPlanner handles path planning and control, outputting velocity commands.
+- Collection: BallCollector deletes Gazebo entities and publishes collection confirmations.
+- Metrics: MissionMetrics independently tracks coverage, time, path length, and efficiency.
 
 ## Pre-Check (Run Once)
 
@@ -25,13 +33,12 @@ pkill -9 -f gzclient || true
 pkill -9 -f spawn_entity.py || true
 pkill -9 -f robot_state_publisher || true
 pkill -9 -f yolo_detector_node || true
-pkill -9 -f rgbd_yolo_node || true
 pkill -9 -f density_map_builder_node || true
+pkill -9 -f mission_controller || true
 pkill -9 -f nav2_ || true
 pkill -9 -f slam_toolbox || true
+pkill -9 -f ball_collector || true
 ```
-
----
 
 ## R1. Build and Install Integrity
 
@@ -45,15 +52,10 @@ colcon build --packages-select turtlebot3_gazebo turtlebot3_vision turtlebot3_ba
 ```
 
 Pass criteria:
-
 - Build exits with code `0`.
 - No package in the command fails.
-
-Evidence to save:
-
-- Build summary lines.
-
----
+- The `mission_controller` executable is produced(check `install/turtlebot3_ball_collection/lib/turtlebot3_ball_collection/`).
+- The `task_manager` executable is NOT present(removed and replaced by mission_controller).
 
 ## R2. Workspace Package Precedence
 
@@ -67,23 +69,13 @@ ros2 pkg prefix turtlebot3_vision
 ros2 pkg prefix turtlebot3_ball_collection
 ```
 
-Pass criteria:
-
-- Prefixes point to `/home/u22/turtlebot/install/...`.
-
-Evidence to save:
-
-- The three printed prefixes.
-/home/u22/turtlebot/install/turtlebot3_gazebo
-/home/u22/turtlebot/install/turtlebot3_vision
-/home/u22/turtlebot/install/turtlebot3_ball_collection
----
+Pass criteria: Prefixes point to `/home/u22/turtlebot/install/...`.
 
 ## R3. Single-Instance Bringup Stability
 
 Requirement: System starts cleanly with one instance per critical node.
 
-Command (full stack):
+Command(full stack):
 
 ```bash
 ros2 launch turtlebot3_ball_collection full_system.launch.py
@@ -93,60 +85,25 @@ Verification commands:
 
 ```bash
 ros2 node list
-ros2 node list | grep -E 'yolo_detector|density_map_builder|robot_state_publisher|amcl|bt_navigator|planner_server|controller_server' -n
+ros2 node list | grep -E 'yolo_detector|density_map_builder|mission_controller|robot_state_publisher|bt_navigator|planner_server|controller_server|slam_toolbox|ball_collector|mission_metrics' -n
 ```
 
 Pass criteria:
+- Each required node appears once.
+- `mission_controller` is present(NOT `task_manager`).
+- No repeated crash or restart logs in first 3 minutes.
 
-- Each required node appears once
-- No repeated crash/restart logs in first 3 minutes.
-
-Evidence to save:
-
-- `ros2 node list` output and launch log snippets.
-/behavior_server
-/bt_navigator
-/bt_navigator_navigate_through_poses_rclcpp_node
-/bt_navigator_navigate_to_pose_rclcpp_node
-/camera_driver
-/controller_server
-/density_map_builder
-/depth_camera_driver
-/gazebo
-/global_costmap/global_costmap
-/lifecycle_manager_navigation
-/local_costmap/local_costmap
-/planner_server
-/robot_state_publisher
-/rviz2
-/rviz_navigation_dialog_action_client
-/slam_toolbox
-/smoother_server
-/transform_listener_impl_56a0cb1fa530
-/transform_listener_impl_58fc63d7f960
-/transform_listener_impl_59db801d51a0
-/transform_listener_impl_59e932baaca0
-/transform_listener_impl_5d969ae5f580
-/transform_listener_impl_608f4fdf7d70
-/transform_listener_impl_63b87de91090
-/turtlebot3_diff_drive
-/turtlebot3_imu
-/turtlebot3_joint_state
-/turtlebot3_laserscan
-/velocity_smoother
-/waypoint_follower
-/yolo_detector
----
-
-2:/bt_navigator
-3:/bt_navigator_navigate_through_poses_rclcpp_node
-4:/bt_navigator_navigate_to_pose_rclcpp_node
-6:/controller_server
-7:/density_map_builder
-13:/planner_server
-14:/robot_state_publisher
-32:/yolo_detector
----
+Expected nodes(minimum):
+- /yolo_detector
+- /density_map_builder
+- /mission_controller
+- /ball_collector
+- /mission_metrics
+- /bt_navigator
+- /planner_server
+- /controller_server
+- /slam_toolbox
+- /robot_state_publisher
 
 ## R4. Sim Time and Clock Consistency
 
@@ -158,18 +115,12 @@ Commands:
 ros2 topic echo /clock --once
 ros2 param get /yolo_detector use_sim_time
 ros2 param get /density_map_builder use_sim_time
+ros2 param get /mission_controller use_sim_time
 ```
 
 Pass criteria:
-
 - `/clock` is publishing.
-- `use_sim_time` is `true` for all simulation-time nodes.
-
-Evidence to save:
-
-- Clock message and parameter outputs.
-Boolean value is: True
----
+- `use_sim_time` is `true` for all three nodes.
 
 ## R5. TF Tree Health
 
@@ -184,23 +135,15 @@ ros2 topic hz /tf_static
 ```
 
 Pass criteria:
-
 - `frames.pdf` generated successfully.
-- Expected frame chain exists: `map -> odom -> base_footprint/base_link` and camera frames.
-- No repeated `OLD_DATA` / extrapolation warnings during steady-state run.
+- Expected frame chain exists: `map` to `odom` to `base_footprint` or `base_link`, plus camera frames.
+- No repeated `OLD_DATA` or extrapolation warnings during steady-state run.
 
-Evidence to save:
+## R6. Camera Publish and Subscribe Contract
 
-- `frames.pdf` and terminal warnings (or absence of warnings).
+Requirement: RGB, Depth, and CameraInfo are actively published and consumed by YOLO.
 
----
-
-## R6. Camera Publish/Subscribe Contract
-
-Requirement: RGB, Depth, CameraInfo are actively published and consumed by YOLO.
-
-Current expected topics in this repo:
-
+Current expected topics:
 - RGB: `/depth_camera/image_raw`
 - Depth: `/depth_camera/depth/image_raw`
 - CameraInfo: `/depth_camera/camera_info`
@@ -215,46 +158,8 @@ ros2 node info /yolo_detector
 ```
 
 Pass criteria:
-
-- RGB and Depth have `Publisher count >= 1`.
+- RGB and Depth have Publisher count at least 1.
 - `/yolo_detector` subscribes to those exact topics.
-
-Evidence to save:
-
-- Topic info outputs and node subscription list.
-/depth_camera/image_raw
-Type: sensor_msgs/msg/Image
-Publisher count: 1
-Subscription count: 1
-
-/depth_camera/depth/image_raw
-Type: sensor_msgs/msg/Image
-Publisher count: 1
-Subscription count: 1
-
-/depth_camera/camera_info
-Type: sensor_msgs/msg/CameraInfo
-Publisher count: 1
-Subscription count: 1
-
-/yolo_detector
-  Subscribers:
-    /depth_camera/camera_info: sensor_msgs/msg/CameraInfo
-    /depth_camera/image_raw: sensor_msgs/msg/Image
-    /clock: rosgraph_msgs/msg/Clock
-    /depth_camera/depth/image_raw: sensor_msgs/msg/Image
-  Publishers:
-    /parameter_events: rcl_interfaces/msg/ParameterEvent
-    /rosout: rcl_interfaces/msg/Log
-    /vision/target_poses: geometry_msgs/msg/PoseArray
-  Service Servers:
-    /yolo_detector/describe_parameters: rcl_interfaces/srv/DescribeParameters
-    /yolo_detector/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
-    /yolo_detector/get_parameters: rcl_interfaces/srv/GetParameters
-    /yolo_detector/list_parameters: rcl_interfaces/srv/ListParameters
-    /yolo_detector/set_parameters: rcl_interfaces/srv/SetParameters
-    /yolo_detector/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
----
 
 ## R7. Vision Processing Validity
 
@@ -268,79 +173,74 @@ ros2 topic hz /vision/target_poses
 ```
 
 Pass criteria:
-
-- Node stays alive and keeps publishing (can be empty poses if no target).
+- Node stays alive and keeps publishing(can be empty poses if no target).
 - No repeating runtime errors for unsupported depth encoding.
-
-Evidence to save:
-
-vision/target_poses --once
-header:
-  stamp:
-    sec: 3023
-    nanosec: 890000000
-  frame_id: camera_rgb_frame
-poses: []
-
----
 
 ## R8. Density Map Update and Decay
 
-Requirement: Density map logic updates from detections and decays over time.
+Requirement: Density map logic updates from detections, decays over time, and responds to explicit ball collection removal.
 
 Commands:
 
 ```bash
 ros2 node info /density_map_builder
 ros2 topic list | grep density
-```
-
-If the package exposes debug/map topics, capture them:
-
-```bash
-ros2 topic echo <density_debug_topic> --once
+ros2 topic list | grep ball_collected
 ```
 
 Pass criteria:
+- `/density_map_builder` subscribes to `/vision/target_poses` AND `/ball_collected`.
+- Publishes `/density_map`, `/density/peaks`, `/visualization/density_markers`.
+- `/density_map` is latched(transient_local QoS).
+- Does NOT have navigation or spin action clients(moved to mission_controller).
+- Density grows with detections, decays over time, and cells are removed when `/ball_collected` is received.
 
-- `/density_map_builder` is running and receiving `/vision/target_poses`.
-- Observed map/density changes after detections and with time decay.
+## R9. Mission Controller (Behavior Tree)
 
-Evidence to save:
+Requirement: BT-based mission controller orchestrates the full task.
 
-/density_map_builder
-  Subscribers:
-    /clock: rosgraph_msgs/msg/Clock
-    /parameter_events: rcl_interfaces/msg/ParameterEvent
-    /vision/target_poses: geometry_msgs/msg/PoseArray
-  Publishers:
-    /density_map: nav_msgs/msg/OccupancyGrid
-    /parameter_events: rcl_interfaces/msg/ParameterEvent
-    /rosout: rcl_interfaces/msg/Log
-    /visualization/density_markers: visualization_msgs/msg/MarkerArray
-  Service Servers:
-    /density_map_builder/describe_parameters: rcl_interfaces/srv/DescribeParameters
-    /density_map_builder/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
-    /density_map_builder/get_parameters: rcl_interfaces/srv/GetParameters
-    /density_map_builder/list_parameters: rcl_interfaces/srv/ListParameters
-    /density_map_builder/set_parameters: rcl_interfaces/srv/SetParameters
-    /density_map_builder/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
-  Service Clients:
+Commands:
 
-  Action Servers:
+```bash
+ros2 node info /mission_controller
+ros2 action list | grep -E 'navigate_to_pose|spin'
+```
 
-  Action Clients:
-    /navigate_to_pose: nav2_msgs/action/NavigateToPose
+Pass criteria:
+- `/mission_controller` subscribes to `/density_map`, `/density/peaks`, `/map`.
+- `/mission_controller` has action clients for `/navigate_to_pose` and `/spin`.
+- BT initialization logs appear(e.g. "BT initialized, starting mission").
+- Node does NOT crash within first 5 minutes.
+- BT cycles through: WaitForMap to WaitForNav2 to the collect or explore loop.
 
+Task flow validation:
+1. Robot waits for SLAM map and Nav2 servers, then enters the main collect/explore loop.
+2. If balls detected, navigates to highest-scored target using the density times distance scoring function.
+3. At target, ball_collector automatically collects nearby balls and triggers `/ball_collected`.
+4. Collected balls trigger `/ball_collected`, density map removes them.
+5. If no detections, explores frontiers; if no frontiers, idles until new detections appear.
+6. Mission ends when no balls remain for `mission_timeout_sec`.
 
-grep density
-/density_map
-/visualization/density_markers
----
+## R10. Ball Collection Feedback Loop
 
-## R9. Navigation Behavior
+Requirement: When a ball is collected in simulation, its position is published to `/ball_collected` and the density map removes it.
 
-Requirement: Robot navigation behavior is stable and goal-driven (no random drift/freeze loops).
+Commands:
+
+```bash
+ros2 node info /ball_collector
+ros2 topic echo /ball_collected --once
+```
+
+Pass criteria:
+- `/ball_collector` publishes to `/ball_collected`(PointStamped).
+- `/ball_collector` uses Gazebo `/delete_entity` service.
+- `/density_map_builder` subscribes to `/ball_collected`.
+- After collection, the corresponding Gaussian blob is removed from the density map.
+
+## R11. Navigation Behavior
+
+Requirement: Robot navigation is stable and goal-driven.
 
 Commands:
 
@@ -353,54 +253,41 @@ ros2 param get /planner_server planner_plugins
 ```
 
 Pass criteria:
-
 - Nav action server is available in full-system mode.
 - `/cmd_vel` is finite and behavior matches planning logic.
-- `planner_plugins` contains `GridBased`.
+- `planner_plugins` includes `DensityAwareAStarPlanner`(turtlebot3_ball_collection/DensityAwareAStarPlanner).
+- Action clients on `/navigate_to_pose` include `mission_controller`.
+- Paths pass through high-density areas when possible(observable in RViz).
 
-Evidence to save:
-- Action info and `/cmd_vel` samples.
+## R12. Metrics Output
 
-/backup
-/compute_path_through_poses
-/compute_path_to_pose
-/drive_on_heading
-/follow_path
-/follow_waypoints
-/navigate_through_poses
-/navigate_to_pose
-/smooth_path
-/spin
-/wait
+Requirement: Mission metrics are correctly tracked and exported.
 
-Action: /navigate_to_pose
-Action clients: 5
-    /density_map_builder
-    /bt_navigator
-    /waypoint_follower
-    /rviz2
-    /rviz_navigation_dialog_action_client
-Action servers: 1
-    /bt_navigator
----
+Commands:
 
-## R10. Documentation-Implementation Consistency
+```bash
+ros2 node info /mission_metrics
+cat /tmp/ball_collection_metrics.csv | tail -5
+```
+
+Pass criteria:
+- `/mission_metrics` subscribes to `/gazebo/model_states`.
+- CSV contains: `balls_total_seen`, `balls_collected`, `balls_remaining`, `coverage_percent`, `path_length_m`, `elapsed_sec`, `efficiency_balls_per_m`.
+- Coverage approaches 100 percent when all balls are collected.
+- Final row has `final=1`.
+
+## R13. Documentation-Implementation Consistency
 
 Requirement: Docs match actual running implementation.
 
 Files to inspect:
-
-- `turtlebot3_ball_collection/DATA_TRANSMISSION_LOGIC.md`
-- `turtlebot3_ball_collection/launch/ball_collection.launch.py`
-- `turtlebot3_vision/turtlebot3_vision/yolo_detector_node.py`
+- `turtlebot3_ball_collection/README.md`: architecture, nodes, topics, BT structure, parameters.
+- `turtlebot3_ball_collection/DATA_TRANSMISSION_LOGIC.md`: data flow, BT logic, cost model, tuning guide.
+- `turtlebot3_ball_collection/launch/ball_collection.launch.py`: node parameters.
+- `turtlebot3_ball_collection/CMakeLists.txt`: build targets(no task_manager, yes mission_controller).
 
 Pass criteria:
-
-- Topic names in docs match code and runtime.
-- "Current implemented" and "future planned" logic are clearly separated.
-
-Evidence to save:
-
-- Short diff or note confirming alignment.
-
----
+- README describes three-layer architecture(Perception, Decision, Execution).
+- DATA_TRANSMISSION_LOGIC describes BT node data flow and cost functions.
+- Launch file parameters match documented defaults.
+- No stale references to `task_manager` node anywhere.

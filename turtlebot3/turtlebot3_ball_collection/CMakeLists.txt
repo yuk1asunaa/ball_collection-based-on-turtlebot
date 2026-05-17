@@ -27,6 +27,7 @@ find_package(rclcpp_action REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(pcl_conversions REQUIRED)
 find_package(pluginlib REQUIRED)
+find_package(behaviortree_cpp_v3 REQUIRED)
 
 include_directories(include)
 
@@ -47,6 +48,21 @@ ament_target_dependencies(
   tf2_geometry_msgs
 )
 
+add_executable(mission_controller src/mission_controller.cpp)
+ament_target_dependencies(
+  mission_controller
+  rclcpp
+  rclcpp_action
+  geometry_msgs
+  nav_msgs
+  nav2_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  behaviortree_cpp_v3
+)
+
+
 add_library(density_aware_astar_planner SHARED src/density_aware_astar_planner.cpp)
 ament_target_dependencies(
   density_aware_astar_planner
@@ -64,16 +80,18 @@ pluginlib_export_plugin_description_file(nav2_core density_aware_astar_planner_p
 
 install(TARGETS
   density_map_builder_node
+  mission_controller
   density_aware_astar_planner
   DESTINATION lib/${PROJECT_NAME}
 )
 
 install(PROGRAMS
   scripts/ball_collector.py
+  scripts/mission_metrics.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY launch param
+install(DIRECTORY launch param behavior_trees
   DESTINATION share/${PROJECT_NAME}
 )
 

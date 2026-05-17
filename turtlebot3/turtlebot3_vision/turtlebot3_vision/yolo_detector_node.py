@@ -129,13 +129,10 @@ class RgbdYoloNode(Node):
             return
 
         current_time = time.perf_counter()
-        if not hasattr(self, '_last_process_time'):
-            self._last_process_time = 0.0
-            
-        if (current_time - self._last_process_time) < 1.0: # Only process 1 frame per second explicitly, dump others
+        
+        self._frame_count += 1
+        if (self._frame_count % self.process_every_n_frames) != 0:
             return
-            
-        self._last_process_time = current_time
 
         # Convert ROS images to numpy matrices
         cv_color = self.bridge.imgmsg_to_cv2(color_msg, "bgr8")
@@ -274,7 +271,7 @@ class RgbdYoloNode(Node):
                 points.append([X_c, Y_c, Z_c])
 
         if points:
-            points = self.smooth_points(points)
+            # Removed local frame smoothing which incorrectly lags targets during rotation
             self.publish_target_poses(points, depth_msg.header)
         else:
             self._smoothed_points = []

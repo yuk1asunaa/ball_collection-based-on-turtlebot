@@ -8,6 +8,7 @@ import rclpy
 from rclpy.node import Node
 from gazebo_msgs.msg import ModelStates
 from gazebo_msgs.srv import DeleteEntity
+from geometry_msgs.msg import PointStamped
 
 
 class BallCollector(Node):
@@ -48,6 +49,7 @@ class BallCollector(Node):
             10,
         )
         self.delete_client = self.create_client(DeleteEntity, self.delete_service_name)
+        self.collected_pub = self.create_publisher(PointStamped, '/ball_collected', 10)
         self.timer = self.create_timer(self.check_period_sec, self.try_collect_once)
 
         self.get_logger().info(
@@ -100,8 +102,9 @@ class BallCollector(Node):
 
         candidate_name = None
         candidate_distance = None
+        candidate_idx = None
 
-        # Increase actual collection distance significantly and waive FOV requirements 
+        # Increase actual collection distance significantly and waive FOV requirements
         # to ensure it definitively collects targets its path puts it next to
         generous_distance = max(self.collect_distance_m, 0.75)
 
@@ -121,9 +124,15 @@ class BallCollector(Node):
             if candidate_distance is None or distance < candidate_distance:
                 candidate_name = name
                 candidate_distance = distance
+                candidate_idx = idx
 
         if candidate_name is not None:
-            self.delete_ball(candidate_name)
+            ball_pos = PointStamped()
+            ball_pos.header.frame_id = 'map'
+            ball_pos.point.x = msg.pose[candidate_idx].position.x
+            ball_pos.point.y = msg.pose[candidate_idx].position.y
+            ball_pos.point.z = 0.0
+            self.delete_ball(candidate_name, ball_pos)
 
     def find_robot_index(self, msg: ModelStates) -> Optional[int]:
         for i, name in enumerate(msg.name):
@@ -136,7 +145,7 @@ class BallCollector(Node):
 
         return None
 
-    def delete_ball(self, model_name: str) -> None:
+    def delete_ball(self, model_name: str, ball_pos: Optional[PointStamped] = None) -> None:
         if not self.delete_client.wait_for_service(timeout_sec=0.1):
             self.get_logger().warn(
                 f'Delete service {self.delete_service_name} not available',
@@ -149,9 +158,9 @@ class BallCollector(Node):
 
         self.delete_in_flight = True
         future = self.delete_client.call_async(req)
-        future.add_done_callback(lambda f: self.on_delete_done(f, model_name))
+        future.add_done_callback(lambda f: self.on_delete_done(f, model_name, ball_pos))
 
-    def on_delete_done(self, future, model_name: str) -> None:
+    def on_delete_done(self, future, model_name: str, ball_pos: Optional[PointStamped] = None) -> None:
         self.delete_in_flight = False
         self.last_collect_time = self.get_clock().now()
 
@@ -160,6 +169,12 @@ class BallCollector(Node):
             if resp is not None and resp.success:
                 self.get_logger().info(f'Collected and removed model: {model_name}')
                 print(f"\\n{'='*50}\\n [SUCCESS] Successfully collected a sphere！(Ball Collected: {model_name})\\n{'='*50}\\n")
+
+                # Publish ball world position so density map builder can remove it
+                if ball_pos is not None:
+                    ball_pos.header.stamp = self.get_clock().now().to_msg()
+                    self.collected_pub.publish(ball_pos)
+                    self.get_logger().debug(f'Published ball_collected at ({ball_pos.point.x:.2f}, {ball_pos.point.y:.2f})')
             else:
                 status = '' if resp is None else resp.status_message
                 self.get_logger().warn(f'Failed to remove {model_name}: {status}')

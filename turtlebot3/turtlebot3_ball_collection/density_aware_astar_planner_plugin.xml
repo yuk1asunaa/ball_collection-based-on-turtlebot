@@ -1,6 +1,6 @@
 <library path="density_aware_astar_planner">
   <class
-    name="turtlebot3_ball_collection/GridBased"
+    name="turtlebot3_ball_collection/DensityAwareAStarPlanner"
     type="turtlebot3_ball_collection::DensityAwareAStarPlanner"
     base_class_type="nav2_core::GlobalPlanner">
     <description>Density-aware A* global planner with negative reward from density_map.</description>

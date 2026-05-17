@@ -10,6 +10,7 @@ from launch.actions import TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition
+from launch_ros.actions import SetParameter
 
 def generate_launch_description():
     # This pipeline depends on RGB-D topics provided by turtlebot3_waffle model.
@@ -57,7 +58,7 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('use_slam'))
     )
 
-    delayed_slam_nav_launch = TimerAction(period=5.0, actions=[slam_nav_launch])
+    delayed_slam_nav_launch = TimerAction(period=12.0, actions=[slam_nav_launch])
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -101,6 +102,7 @@ def generate_launch_description():
             description='Use simulation (Gazebo) clock if true'
         ),
 
+        SetParameter(name='use_sim_time', value=use_sim_time),
         gazebo_launch,
         ball_collection_launch,
         delayed_slam_nav_launch

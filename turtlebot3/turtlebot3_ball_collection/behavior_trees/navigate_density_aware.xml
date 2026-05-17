@@ -1,0 +1,17 @@
+<root main_tree_to_execute="NavigateToPose">
+  <BehaviorTree ID="NavigateToPose">
+    <RecoveryNode number_of_retries="3" name="NavigateRecovery">
+      <PipelineSequence name="NavigateWithReplanning">
+        <RateController hz="1.0">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="DensityAwareAStarPlanner"/>
+        </RateController>
+        <FollowPath path="{path}" controller_id="FollowPath"/>
+      </PipelineSequence>
+      <Sequence name="RecoveryActions">
+        <ClearEntireCostmap name="ClearGlobalCostmap" service_name="/global_costmap/clear_entirely_global_costmap"/>
+        <ClearEntireCostmap name="ClearLocalCostmap" service_name="/local_costmap/clear_entirely_local_costmap"/>
+        <Spin spin_dist="1.57"/>
+      </Sequence>
+    </RecoveryNode>
+  </BehaviorTree>
+</root>

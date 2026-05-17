@@ -4,7 +4,7 @@ pkill -9 -f ros2
 pkill -9 -f gzserver
 pkill -9 -f rviz2
 
-source /home/u22/turtlebot/install/setup.bash
+source /home/u22/turtlebot/turtlebot3/install/setup.bash
 
 export FASTRTPS_DEFAULT_PROFILES_FILE=/home/u22/turtlebot/disable_shm.xml
 export ROS_LOCALHOST_ONLY=1
