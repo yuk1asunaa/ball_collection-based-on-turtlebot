@@ -21,12 +21,12 @@ static const char* kDefaultBTXML = R"(
 <root main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <Sequence name="Mission">
-      <WaitForMap timeout="30"/>
+      <WaitForMap timeout="60"/>
       <WaitForNav2 timeout="120"/>
       <InitialSpin spin_angle="6.283"/>
       <KeepRunningUntilFailure>
         <Sequence name="MainLoop">
-          <CheckBallsRemaining timeout="30"/>
+          <CheckBallsRemaining timeout="300"/>
           <Fallback name="SelectTarget">
             <Sequence name="DensityTarget">
               <HasDetections/>
@@ -225,11 +225,9 @@ BT::NodeStatus WaitForMap::tick()
 }
 
 // ── Condition: WaitForNav2 ──
-// Nav2 lifecycle nodes advertise action servers during on_configure, so
-// wait_for_action_server() returns true before the node is active. Goals
-// sent to an inactive server are silently dropped.  This node sends probe
-// goals to both spin (behavior_server) and navigate_to_pose (bt_navigator)
-// to verify both servers can actually accept goals before proceeding.
+// Wait for both nav and spin action servers to be available.
+// Uses wait_for_action_server only (no probe goals) to avoid
+// interfering with subsequent BT actions (InitialSpin etc.).
 
 WaitForNav2::WaitForNav2(const std::string& name, const BT::NodeConfiguration& config)
   : BT::ConditionNode(name, config) {}
@@ -253,68 +251,17 @@ BT::NodeStatus WaitForNav2::tick()
     RCLCPP_INFO(ctx->node->get_logger(), "Waiting for Nav2 servers to be fully ready...");
   }
 
-  // Phase 1 – wait for action servers to exist
+  // Wait for action servers to be available
   if (!nav_exists_) {
-    nav_exists_ = ctx->nav_client->wait_for_action_server(0s);
+    nav_exists_ = ctx->nav_client->wait_for_action_server(2s);
   }
   if (!spin_exists_) {
-    spin_exists_ = ctx->spin_client->wait_for_action_server(0s);
+    spin_exists_ = ctx->spin_client->wait_for_action_server(2s);
   }
 
   if (nav_exists_ && spin_exists_) {
-    // Phase 2 – probe spin (verifies behavior_server is active)
-    if (!spin_ready_ && !probe_sent_) {
-      nav2_msgs::action::Spin::Goal probe;
-      probe.target_yaw = 0.01;
-      probe.time_allowance = rclcpp::Duration::from_seconds(0.5);
-
-      auto opts = rclcpp_action::Client<nav2_msgs::action::Spin>::SendGoalOptions();
-      opts.goal_response_callback = [this](rclcpp_action::ClientGoalHandle<nav2_msgs::action::Spin>::SharedPtr gh) {
-        if (gh) spin_ready_ = true;
-        probe_done_ = true;
-      };
-      opts.result_callback = [this](auto) { probe_done_ = true; };
-
-      ctx->spin_client->async_send_goal(probe, opts);
-      probe_sent_ = true;
-    }
-
-    if (probe_done_ && !spin_ready_) {
-      probe_sent_ = false;
-      probe_done_ = false;
-      RCLCPP_DEBUG(ctx->node->get_logger(), "Nav2 spin probe rejected, retrying...");
-    }
-
-    // Phase 3 – probe navigate_to_pose (verifies bt_navigator is active)
-    if (spin_ready_ && !nav_probe_sent_) {
-      nav2_msgs::action::NavigateToPose::Goal nav_probe;
-      nav_probe.pose.header.frame_id = "map";
-      nav_probe.pose.header.stamp = rclcpp::Time(0, 0, ctx->node->get_clock()->get_clock_type());
-      nav_probe.pose.pose.orientation.w = 1.0;
-
-      auto opts = rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions();
-      opts.goal_response_callback = [this](rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::SharedPtr gh) {
-        if (gh) {
-          nav_ready_ = true;
-        }
-        nav_probe_done_ = true;
-      };
-      opts.result_callback = [this](auto) { nav_probe_done_ = true; };
-
-      ctx->nav_client->async_send_goal(nav_probe, opts);
-      nav_probe_sent_ = true;
-    }
-
-    if (nav_probe_done_ && !nav_ready_) {
-      nav_probe_sent_ = false;
-      nav_probe_done_ = false;
-      RCLCPP_DEBUG(ctx->node->get_logger(), "Nav2 nav probe rejected, retrying...");
-    }
-
-    if (spin_ready_ && nav_ready_) {
-      RCLCPP_INFO(ctx->node->get_logger(), "Nav2 action servers fully ready, proceeding");
-      return BT::NodeStatus::SUCCESS;
-    }
+    RCLCPP_INFO(ctx->node->get_logger(), "Nav2 action servers ready, proceeding");
+    return BT::NodeStatus::SUCCESS;
   }
 
   auto elapsed = (ctx->node->now() - start_time_).seconds();
@@ -431,9 +378,15 @@ BT::NodeStatus InitialSpin::onStart()
     return BT::NodeStatus::FAILURE;
   }
 
+  // Cancel any pre-existing spin goals to avoid preemption conflicts
+  ctx->spin_client->async_cancel_all_goals();
+
+  // Brief delay to let costmap footprints become available
+  rclcpp::sleep_for(500ms);
+
   nav2_msgs::action::Spin::Goal goal;
   goal.target_yaw = spin_angle_;
-  goal.time_allowance = rclcpp::Duration::from_seconds(30.0);
+  goal.time_allowance = rclcpp::Duration::from_seconds(60.0);
 
   auto opts = rclcpp_action::Client<nav2_msgs::action::Spin>::SendGoalOptions();
   opts.result_callback = [this](auto) {
@@ -441,8 +394,9 @@ BT::NodeStatus InitialSpin::onStart()
     spin_success_ = true;
   };
   opts.goal_response_callback = [this](auto future) {
-    if (!future.get()) {
-      RCLCPP_WARN(rclcpp::get_logger("InitialSpin"), "Spin goal rejected by server");
+    auto gh = future.get();
+    if (!gh) {
+      RCLCPP_WARN(rclcpp::get_logger("InitialSpin"), "Spin goal rejected by server, will retry");
       spin_done_ = true;
       spin_success_ = false;
     }
@@ -464,12 +418,18 @@ BT::NodeStatus InitialSpin::onRunning()
   if (!ctx) return BT::NodeStatus::FAILURE;
 
   if (spin_done_) {
-    RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: done");
-    return spin_success_ ? BT::NodeStatus::SUCCESS : BT::NodeStatus::FAILURE;
+    if (spin_success_) {
+      RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: done");
+      return BT::NodeStatus::SUCCESS;
+    } else {
+      // Retry once if spin was rejected (e.g., footprint not ready)
+      RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: retrying after rejection...");
+      return onStart();
+    }
   }
 
-  // Timeout after 20s
-  if ((ctx->node->now() - spin_start_).seconds() > 20.0) {
+  // Timeout after 90s (full 360 spin at slow speed takes time)
+  if ((ctx->node->now() - spin_start_).seconds() > 90.0) {
     RCLCPP_WARN(ctx->node->get_logger(), "InitialSpin: timeout");
     return BT::NodeStatus::SUCCESS;  // proceed anyway
   }
@@ -703,24 +663,25 @@ BT::NodeStatus NavigateToTarget::onStart()
   {
     std::lock_guard<std::mutex> lock(ctx->mtx);
 
-    // Check if robot is already at target
+    // Check if robot is already very close to target
     double rx = current_goal_.x, ry = current_goal_.y;
     try {
       auto t = ctx->tf_buffer->lookupTransform("map", "base_link",
-        tf2::TimePointZero, tf2::durationFromSec(0.3));
+        tf2::TimePointZero, tf2::durationFromSec(0.5));
       rx = t.transform.translation.x;
       ry = t.transform.translation.y;
     } catch (...) {}
-    if (std::hypot(current_goal_.x - rx, current_goal_.y - ry) < 0.3) {
+    if (std::hypot(current_goal_.x - rx, current_goal_.y - ry) < 0.15) {
       RCLCPP_INFO(ctx->node->get_logger(), "NavigateToTarget: already at (%.2f,%.2f), skipping",
         current_goal_.x, current_goal_.y);
       return BT::NodeStatus::SUCCESS;
     }
 
-    // Check if target is too close to any recently visited goal
-    for (auto it = ctx->visited_goals.rbegin(); it != ctx->visited_goals.rend(); ++it) {
-      if (std::hypot(current_goal_.x - it->x, current_goal_.y - it->y) < ctx->goal_min_separation) {
-        RCLCPP_INFO(ctx->node->get_logger(), "NavigateToTarget: target near visited goal, skipping");
+    // Only skip if target is extremely close to the last visited goal
+    if (!ctx->visited_goals.empty()) {
+      const auto& last = ctx->visited_goals.back();
+      if (std::hypot(current_goal_.x - last.x, current_goal_.y - last.y) < 0.1) {
+        RCLCPP_INFO(ctx->node->get_logger(), "NavigateToTarget: target too close to last visited goal, skipping");
         return BT::NodeStatus::SUCCESS;
       }
     }

@@ -179,7 +179,8 @@ source /opt/ros/humble/setup.bash
 source /home/u22/turtlebot/install/setup.bash
 ros2 launch turtlebot3_ball_collection full_system.launch.py 2>&1 | tee test.log
 ```
-
+ros2 run tf2_tools view_frames
+   
 ## 任务流程
 
 1. 系统启动，Gazebo 加载网球场世界和 TurtleBot3 模型，SLAM toolbox 开始在线建图。

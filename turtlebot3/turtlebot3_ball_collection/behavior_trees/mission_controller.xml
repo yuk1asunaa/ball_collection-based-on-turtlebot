@@ -1,0 +1,22 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="Mission">
+      <WaitForMap timeout="60"/>
+      <WaitForNav2 timeout="120"/>
+      <InitialSpin spin_angle="6.283"/>
+      <KeepRunningUntilFailure>
+        <Sequence name="MainLoop">
+          <CheckBallsRemaining timeout="300"/>
+          <Fallback name="SelectTarget">
+            <Sequence name="DensityTarget">
+              <HasDetections/>
+              <SelectBestTarget/>
+            </Sequence>
+            <ExploreAction/>
+          </Fallback>
+          <NavigateToTarget/>
+        </Sequence>
+      </KeepRunningUntilFailure>
+    </Sequence>
+  </BehaviorTree>
+</root>

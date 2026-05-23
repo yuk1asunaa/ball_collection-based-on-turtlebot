@@ -58,7 +58,7 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('use_slam'))
     )
 
-    delayed_slam_nav_launch = TimerAction(period=12.0, actions=[slam_nav_launch])
+    delayed_slam_nav_launch = TimerAction(period=20.0, actions=[slam_nav_launch])
 
     return LaunchDescription([
         DeclareLaunchArgument(
