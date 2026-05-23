@@ -132,6 +132,8 @@ private:
   bool spin_success_{false};
   rclcpp::Time spin_start_;
   double spin_angle_{2.0 * M_PI};
+  int retry_count_{0};
+  static constexpr int kMaxRetries = 5;
 };
 
 class SelectBestTarget : public BT::SyncActionNode
@@ -166,7 +168,7 @@ private:
   int retry_count_{0};
   rclcpp::Time last_reject_time_{0, 0, RCL_ROS_TIME};
   geometry_msgs::msg::Point current_goal_;
-  static constexpr int kMaxRetries = 10;
+  static constexpr int kMaxRetries = 5;
 };
 
 class SpinCollect : public BT::StatefulActionNode

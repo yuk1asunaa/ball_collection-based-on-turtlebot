@@ -1,0 +1,349 @@
+[INFO] [launch]: All log files can be found below /home/u22/.ros/log/2026-05-23-22-52-51-415409-u22-virtual-machine-14202
+[INFO] [launch]: Default logging verbosity is set to INFO
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+[INFO] [gzserver-1]: process started with pid [14289]
+[INFO] [gzclient-2]: process started with pid [14291]
+[INFO] [robot_state_publisher-3]: process started with pid [14293]
+[INFO] [spawn_entity.py-4]: process started with pid [14295]
+[INFO] [python3-5]: process started with pid [14297]
+[INFO] [yolo_detector_node-6]: process started with pid [14299]
+[INFO] [density_map_builder_node-7]: process started with pid [14301]
+[INFO] [mission_controller-8]: process started with pid [14303]
+[INFO] [ball_collector.py-9]: process started with pid [14307]
+[INFO] [mission_metrics.py-10]: process started with pid [14316]
+[robot_state_publisher-3] [INFO] [1779547979.796309526] [robot_state_publisher]: got segment base_footprint
+[robot_state_publisher-3] [INFO] [1779547979.796705246] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-3] [INFO] [1779547979.796750483] [robot_state_publisher]: got segment base_scan
+[robot_state_publisher-3] [INFO] [1779547979.796775420] [robot_state_publisher]: got segment camera_depth_frame
+[robot_state_publisher-3] [INFO] [1779547979.796798891] [robot_state_publisher]: got segment camera_depth_optical_frame
+[robot_state_publisher-3] [INFO] [1779547979.796821508] [robot_state_publisher]: got segment camera_link
+[robot_state_publisher-3] [INFO] [1779547979.796842929] [robot_state_publisher]: got segment camera_rgb_frame
+[robot_state_publisher-3] [INFO] [1779547979.796863577] [robot_state_publisher]: got segment camera_rgb_optical_frame
+[robot_state_publisher-3] [INFO] [1779547979.796883736] [robot_state_publisher]: got segment caster_back_left_link
+[robot_state_publisher-3] [INFO] [1779547979.796904707] [robot_state_publisher]: got segment caster_back_right_link
+[robot_state_publisher-3] [INFO] [1779547979.796925241] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-3] [INFO] [1779547979.796945806] [robot_state_publisher]: got segment wheel_left_link
+[robot_state_publisher-3] [INFO] [1779547979.796965966] [robot_state_publisher]: got segment wheel_right_link
+[mission_controller-8] [INFO] [1779547979.996851831] [mission_controller]: MissionController ready: density_w=1.00 distance_w=0.50 visit_w=0.30 timeout=300.0s
+[density_map_builder_node-7] [INFO] [1779547980.006966588] [density_map_builder]: DensityMapBuilder ready (perception-only): grid=240x240, sigma=0.70, decay=0.990
+[mission_metrics.py-10] [INFO] [1779547981.292981832] [mission_metrics]: MissionMetrics started: topic=/gazebo/model_states, output_csv=/tmp/ball_collection_metrics.csv
+[ball_collector.py-9] [INFO] [1779547981.461741358] [ball_collector]: BallCollector started: topic=/gazebo/model_states, delete_service=/delete_entity, distance=0.50m, half_fov=3.14rad
+[spawn_entity.py-4] [INFO] [1779547981.933347592] [spawn_entity]: Spawn Entity started
+[spawn_entity.py-4] [INFO] [1779547981.935508228] [spawn_entity]: Loading entity XML from file /home/u22/turtlebot/install/turtlebot3_gazebo/share/turtlebot3_gazebo/models/turtlebot3_waffle/model.sdf
+[spawn_entity.py-4] [INFO] [1779547981.940730158] [spawn_entity]: Waiting for service /spawn_entity, timeout = 120
+[spawn_entity.py-4] [INFO] [1779547981.942296791] [spawn_entity]: Waiting for service /spawn_entity
+[gzserver-1] [INFO] [1779547983.178514407] [gazebo.gazebo_ros_state]: Publishing states of gazebo models at [/gazebo/model_states]
+[gzserver-1] [INFO] [1779547983.185758713] [gazebo.gazebo_ros_state]: Publishing states of gazebo links at [/gazebo/link_states]
+[python3-5] [INFO] [1779547983.591890299] [spawn_random_tennis_balls]: Spawned tennis_ball_0 at (3.21, -4.75)
+[python3-5] [INFO] [1779547983.621086074] [spawn_random_tennis_balls]: Spawned tennis_ball_1 at (-5.17, -2.77)
+[python3-5] [INFO] [1779547983.654128961] [spawn_random_tennis_balls]: Spawned tennis_ball_2 at (5.44, 1.77)
+[ball_collector.py-9] [WARN] [1779547983.670239703] [ball_collector]: Robot model not found in /gazebo/model_states
+[python3-5] [INFO] [1779547983.710211452] [spawn_random_tennis_balls]: Spawned tennis_ball_3 at (9.02, -4.13)
+[python3-5] [INFO] [1779547983.740742300] [spawn_random_tennis_balls]: Spawned tennis_ball_4 at (-1.80, -4.70)
+[python3-5] [INFO] [1779547983.770503389] [spawn_random_tennis_balls]: Spawned tennis_ball_5 at (-6.47, 0.05)
+[python3-5] [INFO] [1779547984.010554010] [spawn_random_tennis_balls]: Spawned tennis_ball_6 at (-10.89, -3.01)
+[python3-5] [INFO] [1779547984.291426655] [spawn_random_tennis_balls]: Spawned tennis_ball_7 at (3.45, 0.45)
+[python3-5] [INFO] [1779547984.576969838] [spawn_random_tennis_balls]: Spawned tennis_ball_8 at (-6.43, 0.89)
+[spawn_entity.py-4] [INFO] [1779547984.715369989] [spawn_entity]: Calling service /spawn_entity
+[python3-5] [INFO] [1779547984.858505095] [spawn_random_tennis_balls]: Spawned tennis_ball_9 at (7.12, -4.94)
+[gzserver-1] [INFO] [1779547985.528104484] [turtlebot3_imu]: <initial_orientation_as_reference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[gzserver-1] [INFO] [1779547986.483290435] [camera_driver]: Publishing camera info to [/camera/camera_info]
+[spawn_entity.py-4] [INFO] [1779547986.543075619] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [waffle]
+[gzserver-1] [INFO] [1779547986.574123791] [depth_camera_driver]: Publishing camera info to [/depth_camera/camera_info]
+[gzserver-1] [INFO] [1779547986.599972146] [depth_camera_driver]: Publishing depth camera info to [/depth_camera/depth/camera_info]
+[gzserver-1] [INFO] [1779547986.608633875] [depth_camera_driver]: Publishing pointcloud to [/depth_camera/points]
+[gzserver-1] [INFO] [1779547986.824018888] [turtlebot3_diff_drive]: Wheel pair 1 separation set to [0.287000m]
+[gzserver-1] [INFO] [1779547986.824167830] [turtlebot3_diff_drive]: Wheel pair 1 diameter set to [0.066000m]
+[gzserver-1] [INFO] [1779547986.847520823] [turtlebot3_diff_drive]: Subscribed to [/cmd_vel]
+[gzserver-1] [INFO] [1779547986.861515891] [turtlebot3_diff_drive]: Advertise odometry on [/odom]
+[gzserver-1] [INFO] [1779547986.882239239] [turtlebot3_diff_drive]: Publishing odom transforms between [odom] and [base_footprint]
+[INFO] [spawn_entity.py-4]: process has finished cleanly [pid 14295]
+[gzserver-1] [INFO] [1779547986.987430627] [turtlebot3_joint_state]: Going to publish joint [wheel_left_joint]
+[gzserver-1] [INFO] [1779547986.987584496] [turtlebot3_joint_state]: Going to publish joint [wheel_right_joint]
+[python3-5] [INFO] [1779547987.316521194] [spawn_random_tennis_balls]: Spawned tennis_ball_10 at (7.03, 1.98)
+[python3-5] [INFO] [1779547987.602071911] [spawn_random_tennis_balls]: Spawned tennis_ball_11 at (-3.67, -3.45)
+[python3-5] [INFO] [1779547987.897425702] [spawn_random_tennis_balls]: Spawned tennis_ball_12 at (10.52, -1.63)
+[python3-5] [INFO] [1779547988.183567457] [spawn_random_tennis_balls]: Spawned tennis_ball_13 at (-9.37, -4.03)
+[python3-5] [INFO] [1779547988.491864586] [spawn_random_tennis_balls]: Spawned tennis_ball_14 at (7.99, 1.04)
+[python3-5] [INFO] [1779547988.794459831] [spawn_random_tennis_balls]: Spawned tennis_ball_15 at (7.06, 2.30)
+[python3-5] [INFO] [1779547989.074403775] [spawn_random_tennis_balls]: Spawned tennis_ball_16 at (0.83, 4.73)
+[python3-5] [INFO] [1779547989.361608659] [spawn_random_tennis_balls]: Spawned tennis_ball_17 at (-2.79, 0.52)
+[python3-5] [INFO] [1779547989.658729340] [spawn_random_tennis_balls]: Spawned tennis_ball_18 at (7.58, 1.19)
+[python3-5] [INFO] [1779547989.952804297] [spawn_random_tennis_balls]: Spawned tennis_ball_19 at (8.32, 0.77)
+[python3-5] [INFO] [1779547989.955421357] [spawn_random_tennis_balls]: Finished spawning 20 tennis balls
+[INFO] [python3-5]: process has finished cleanly [pid 14297]
+[yolo_detector_node-6] [INFO] [1779547991.916466156] [yolo_detector]: RGB-D YOLO, The time alignment node has been activated.: color=/depth_camera/image_raw, depth=/depth_camera/depth/image_raw, camera_info=/depth_camera/camera_info, conf=0.05, class_id=32, slop=0.2, queue=2, imgsz=640, device=cpu, process_every_n_frames=5, debug_image=True(/vision/debug_image)
+[mission_metrics.py-10] [INFO] [1779547993.894110935] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.00m, elapsed=2.0s, efficiency=0.000 balls/m
+[yolo_detector_node-6] [INFO] [1779547994.211049158] [yolo_detector]: Camera intrinsics parameters have been updated.: fx=565.6008952774197, fy=565.6008952774197, cx=320.5, cy=240.5
+[INFO] [async_slam_toolbox_node-11]: process started with pid [14730]
+[INFO] [controller_server-12]: process started with pid [14732]
+[INFO] [smoother_server-13]: process started with pid [14734]
+[INFO] [planner_server-14]: process started with pid [14736]
+[INFO] [behavior_server-15]: process started with pid [14738]
+[INFO] [bt_navigator-16]: process started with pid [14740]
+[INFO] [waypoint_follower-17]: process started with pid [14742]
+[INFO] [velocity_smoother-18]: process started with pid [14744]
+[INFO] [lifecycle_manager-19]: process started with pid [14750]
+[INFO] [rviz2-20]: process started with pid [14757]
+[async_slam_toolbox_node-11] [INFO] [1779548000.515097284] [slam_toolbox]: Node using stack size 40000000
+[rviz2-20] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[waypoint_follower-17] [INFO] [1779548000.842194142] [waypoint_follower]: 
+[waypoint_follower-17] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-17] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-17] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-17] [INFO] [1779548000.845071472] [waypoint_follower]: Creating
+[bt_navigator-16] [INFO] [1779548001.129055343] [bt_navigator]: 
+[bt_navigator-16] 	bt_navigator lifecycle node launched. 
+[bt_navigator-16] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-16] [INFO] [1779548001.135031440] [bt_navigator]: Creating
+[controller_server-12] [INFO] [1779548001.162747726] [controller_server]: 
+[controller_server-12] 	controller_server lifecycle node launched. 
+[controller_server-12] 	Waiting on external lifecycle transitions to activate
+[controller_server-12] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-12] [INFO] [1779548001.239146434] [controller_server]: Creating controller server
+[lifecycle_manager-19] [INFO] [1779548001.309229930] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-19] [INFO] [1779548001.374170655] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[behavior_server-15] [INFO] [1779548001.389743859] [behavior_server]: 
+[behavior_server-15] 	behavior_server lifecycle node launched. 
+[behavior_server-15] 	Waiting on external lifecycle transitions to activate
+[behavior_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-13] [INFO] [1779548001.389926397] [smoother_server]: 
+[smoother_server-13] 	smoother_server lifecycle node launched. 
+[smoother_server-13] 	Waiting on external lifecycle transitions to activate
+[smoother_server-13] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-13] [INFO] [1779548001.501462606] [smoother_server]: Creating smoother server
+[velocity_smoother-18] [INFO] [1779548001.565119443] [velocity_smoother]: 
+[velocity_smoother-18] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-18] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-14] [INFO] [1779548001.709827688] [planner_server]: 
+[planner_server-14] 	planner_server lifecycle node launched. 
+[planner_server-14] 	Waiting on external lifecycle transitions to activate
+[planner_server-14] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-14] [INFO] [1779548001.762244883] [planner_server]: Creating
+[controller_server-12] [INFO] [1779548001.799718734] [local_costmap.local_costmap]: 
+[controller_server-12] 	local_costmap lifecycle node launched. 
+[controller_server-12] 	Waiting on external lifecycle transitions to activate
+[controller_server-12] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-12] [INFO] [1779548001.815142059] [local_costmap.local_costmap]: Creating Costmap
+[async_slam_toolbox_node-11] [INFO] [1779548002.066444596] [slam_toolbox]: Using solver plugin solver_plugins::CeresSolver
+[async_slam_toolbox_node-11] [INFO] [1779548002.088889824] [slam_toolbox]: CeresSolver: Using SCHUR_JACOBI preconditioner.
+[mission_metrics.py-10] [INFO] [1779548002.099259333] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.00m, elapsed=4.0s, efficiency=0.000 balls/m
+[lifecycle_manager-19] [INFO] [1779548002.916992263] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-19] [INFO] [1779548002.917322962] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-12] [INFO] [1779548002.929157995] [controller_server]: Configuring controller interface
+[controller_server-12] [INFO] [1779548002.954473175] [controller_server]: getting goal checker plugins..
+[controller_server-12] [INFO] [1779548002.954957178] [controller_server]: Controller frequency set to 5.0000Hz
+[controller_server-12] [INFO] [1779548002.955702005] [local_costmap.local_costmap]: Configuring
+[planner_server-14] [INFO] [1779548003.003563654] [global_costmap.global_costmap]: 
+[planner_server-14] 	global_costmap lifecycle node launched. 
+[planner_server-14] 	Waiting on external lifecycle transitions to activate
+[planner_server-14] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-14] [INFO] [1779548003.004538573] [global_costmap.global_costmap]: Creating Costmap
+[controller_server-12] [INFO] [1779548003.183175401] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[controller_server-12] [INFO] [1779548003.253377506] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-12] [INFO] [1779548003.640332671] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-12] [INFO] [1779548003.640446273] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-12] [INFO] [1779548003.664639340] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-12] [INFO] [1779548003.779551592] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-12] [INFO] [1779548003.779670169] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-12] [INFO] [1779548003.810114341] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[async_slam_toolbox_node-11] [WARN] [1779548003.903550613] [slam_toolbox]: minimum laser range setting (0.1 m) exceeds the capabilities of the used Lidar (0.1 m)
+[async_slam_toolbox_node-11] Info: clipped range threshold to be within minimum and maximum range!
+[async_slam_toolbox_node-11] Registering sensor: [Custom Described Lidar]
+[controller_server-12] [INFO] [1779548003.911832083] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-12] [INFO] [1779548003.921487507] [controller_server]: Created goal checker : general_goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-12] [INFO] [1779548003.929851316] [controller_server]: Controller Server has general_goal_checker  goal checkers available.
+[controller_server-12] [INFO] [1779548003.936398038] [controller_server]: Created controller : FollowPath of type dwb_core::DWBLocalPlanner
+[controller_server-12] [INFO] [1779548003.945378808] [controller_server]: Setting transform_tolerance to 5.000000
+[controller_server-12] [INFO] [1779548004.034723386] [controller_server]: Using critic "RotateToGoal" (dwb_critics::RotateToGoalCritic)
+[controller_server-12] [INFO] [1779548004.041942926] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.043499444] [controller_server]: Using critic "Oscillation" (dwb_critics::OscillationCritic)
+[controller_server-12] [INFO] [1779548004.049673235] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.049963534] [controller_server]: Using critic "BaseObstacle" (dwb_critics::BaseObstacleCritic)
+[controller_server-12] [INFO] [1779548004.050147680] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.050238768] [controller_server]: Using critic "GoalAlign" (dwb_critics::GoalAlignCritic)
+[controller_server-12] [INFO] [1779548004.050522730] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.050616491] [controller_server]: Using critic "PathAlign" (dwb_critics::PathAlignCritic)
+[controller_server-12] [INFO] [1779548004.057708710] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.058725501] [controller_server]: Using critic "PathDist" (dwb_critics::PathDistCritic)
+[controller_server-12] [INFO] [1779548004.060479997] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.061607918] [controller_server]: Using critic "GoalDist" (dwb_critics::GoalDistCritic)
+[controller_server-12] [INFO] [1779548004.063447250] [controller_server]: Critic plugin initialized
+[controller_server-12] [INFO] [1779548004.064833346] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-19] [INFO] [1779548004.140214429] [lifecycle_manager_navigation]: [34m[1mConfiguring smoother_server[0m[0m
+[smoother_server-13] [INFO] [1779548004.142357987] [smoother_server]: Configuring smoother server
+[smoother_server-13] [INFO] [1779548004.279135795] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-13] [INFO] [1779548004.291065736] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-19] [INFO] [1779548004.365842164] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-14] [INFO] [1779548004.368973641] [planner_server]: Configuring
+[planner_server-14] [INFO] [1779548004.369107695] [global_costmap.global_costmap]: Configuring
+[planner_server-14] [INFO] [1779548004.438248186] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-14] [INFO] [1779548004.469365862] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-14] [INFO] [1779548004.488565698] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-14] [INFO] [1779548004.489807287] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-14] [INFO] [1779548004.501669000] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-14] [INFO] [1779548004.557182279] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-14] [INFO] [1779548004.557495488] [global_costmap.global_costmap]: Using plugin "voxel_layer"
+[planner_server-14] [INFO] [1779548004.564968813] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-14] [INFO] [1779548004.663788713] [global_costmap.global_costmap]: Initialized plugin "voxel_layer"
+[planner_server-14] [INFO] [1779548004.664356792] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-14] [INFO] [1779548004.676895184] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[rviz2-20] [INFO] [1779548004.736831115] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-20] [INFO] [1779548004.739353398] [rviz2]: OpenGl version: 4.3 (GLSL 4.3)
+[planner_server-14] [INFO] [1779548004.781499954] [planner_server]: Created global planner plugin DensityAwareAStarPlanner of type turtlebot3_ball_collection/DensityAwareAStarPlanner
+[planner_server-14] [INFO] [1779548004.810886001] [planner_server]: Configured DensityAwareAStarPlanner: topic=/density_map obstacle_weight=1.200 density_weight=0.700
+[planner_server-14] [INFO] [1779548004.811009350] [planner_server]: Planner Server has DensityAwareAStarPlanner  planners available.
+[lifecycle_manager-19] [INFO] [1779548004.892776267] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-15] [INFO] [1779548004.894514248] [behavior_server]: Configuring
+[behavior_server-15] [INFO] [1779548004.978980435] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors/Spin
+[behavior_server-15] [INFO] [1779548004.985633917] [behavior_server]: Configuring spin
+[rviz2-20] [INFO] [1779548005.011134115] [rviz2]: Stereo is NOT SUPPORTED
+[behavior_server-15] [INFO] [1779548005.053433382] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors/BackUp
+[behavior_server-15] [INFO] [1779548005.061541994] [behavior_server]: Configuring backup
+[behavior_server-15] [INFO] [1779548005.142555822] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors/Wait
+[behavior_server-15] [INFO] [1779548005.148091847] [behavior_server]: Configuring wait
+[lifecycle_manager-19] [INFO] [1779548005.218006511] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-16] [INFO] [1779548005.220098239] [bt_navigator]: Configuring
+[lifecycle_manager-19] [INFO] [1779548005.838984756] [lifecycle_manager_navigation]: [34m[1mConfiguring waypoint_follower[0m[0m
+[waypoint_follower-17] [INFO] [1779548005.848970092] [waypoint_follower]: Configuring
+[waypoint_follower-17] [INFO] [1779548006.007087610] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-19] [INFO] [1779548006.011470304] [lifecycle_manager_navigation]: [34m[1mConfiguring velocity_smoother[0m[0m
+[velocity_smoother-18] [INFO] [1779548006.019048733] [velocity_smoother]: Configuring velocity smoother
+[lifecycle_manager-19] [INFO] [1779548006.084940715] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-12] [INFO] [1779548006.085945559] [controller_server]: Activating
+[controller_server-12] [INFO] [1779548006.086073796] [local_costmap.local_costmap]: Activating
+[controller_server-12] [INFO] [1779548006.086123062] [local_costmap.local_costmap]: Checking transform
+[controller_server-12] [INFO] [1779548006.086523944] [local_costmap.local_costmap]: start
+[controller_server-12] [INFO] [1779548006.467229414] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548006.604060962] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-19] [INFO] [1779548006.604171867] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[smoother_server-13] [INFO] [1779548006.606274183] [smoother_server]: Activating
+[smoother_server-13] [INFO] [1779548006.606339123] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548006.744611836] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-19] [INFO] [1779548006.744755468] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-14] [INFO] [1779548006.747582468] [planner_server]: Activating
+[planner_server-14] [INFO] [1779548006.747664365] [global_costmap.global_costmap]: Activating
+[planner_server-14] [INFO] [1779548006.747691354] [global_costmap.global_costmap]: Checking transform
+[planner_server-14] [INFO] [1779548006.747785580] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation at time 5.130000, but only time 6.410000 is in the buffer, when looking up transform from frame [base_link] to frame [map]
+[planner_server-14] [INFO] [1779548007.249081880] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation at time 5.250000, but only time 6.410000 is in the buffer, when looking up transform from frame [base_link] to frame [map]
+[planner_server-14] [INFO] [1779548007.769452742] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation at time 5.370000, but only time 6.410000 is in the buffer, when looking up transform from frame [base_link] to frame [map]
+[planner_server-14] [INFO] [1779548007.839521025] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 106 X 89 at 0.050000 m/pix
+[mission_controller-8] [INFO] [1779548007.847864103] [mission_controller]: BT initialized (from map), starting mission
+[mission_controller-8] [INFO] [1779548007.905953161] [mission_controller]: SLAM map received, proceeding
+[mission_controller-8] [INFO] [1779548007.906298265] [mission_controller]: Waiting for Nav2 servers to be fully ready...
+[mission_controller-8] [INFO] [1779548007.906966233] [mission_controller]: Nav2 action servers ready, proceeding
+[planner_server-14] [INFO] [1779548008.248040650] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.490000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548008.411868616] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548008.417776810] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548008.453463897] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548008.752765908] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.610000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548008.955739386] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548008.970662060] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548009.007967710] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548009.275281496] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.730000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548009.533716117] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548009.548833031] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548009.554768541] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548009.754674792] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.850000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548010.075199100] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548010.076744338] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548010.106095462] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548010.258752307] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.970000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_metrics.py-10] [INFO] [1779548010.290803642] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.00m, elapsed=6.0s, efficiency=0.000 balls/m
+[mission_controller-8] [INFO] [1779548010.611286182] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548010.616523746] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548010.656326246] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548010.749529613] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.090000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548011.161184124] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548011.163224784] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548011.207347549] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548011.252033589] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.210000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548011.712558809] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548011.713540523] [InitialSpin]: Spin goal rejected by server, will retry
+[planner_server-14] [INFO] [1779548011.748348783] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.370000 but the earliest data is at time 6.410000, when looking up transform from frame [base_link] to frame [map]
+[mission_controller-8] [INFO] [1779548011.753658701] [mission_controller]: InitialSpin: retrying after rejection...
+[yolo_detector_node-6] [INFO] [1779548011.982589137] [yolo_detector]: Published 5 target poses
+[yolo_detector_node-6] [INFO] [1779548011.988861331] [yolo_detector]: Timing window: samples=1, avg_cb=4674.5ms, avg_inf=4634.5ms
+[planner_server-14] [INFO] [1779548012.248549677] [global_costmap.global_costmap]: start
+[mission_controller-8] [INFO] [1779548012.256244019] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548012.265080016] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548012.303863555] [mission_controller]: InitialSpin: retrying after rejection...
+[mission_controller-8] [INFO] [1779548012.805950157] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548012.810721453] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548012.854724225] [mission_controller]: InitialSpin: retrying after rejection...
+[planner_server-14] [INFO] [1779548013.300461458] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[mission_controller-8] [INFO] [1779548013.357992484] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[mission_controller-8] [WARN] [1779548013.359045904] [InitialSpin]: Spin goal rejected by server, will retry
+[mission_controller-8] [INFO] [1779548013.403419267] [mission_controller]: InitialSpin: retrying after rejection...
+[lifecycle_manager-19] [INFO] [1779548013.434873855] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-19] [INFO] [1779548013.435109972] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-15] [INFO] [1779548013.439837598] [behavior_server]: Activating
+[behavior_server-15] [INFO] [1779548013.439942130] [behavior_server]: Activating spin
+[behavior_server-15] [INFO] [1779548013.439984749] [behavior_server]: Activating backup
+[behavior_server-15] [INFO] [1779548013.440019367] [behavior_server]: Activating wait
+[behavior_server-15] [INFO] [1779548013.440058976] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548013.568131398] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-19] [INFO] [1779548013.568321478] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-16] [INFO] [1779548013.569854018] [bt_navigator]: Activating
+[mission_controller-8] [INFO] [1779548013.908320223] [mission_controller]: InitialSpin: starting 6.28 rad rotation
+[behavior_server-15] [INFO] [1779548013.910081997] [behavior_server]: Running spin
+[behavior_server-15] [INFO] [1779548013.916882324] [behavior_server]: Turning 6.28 for spin behavior.
+[bt_navigator-16] [INFO] [1779548014.007042507] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548014.132638466] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-19] [INFO] [1779548014.132974459] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[waypoint_follower-17] [INFO] [1779548014.135493138] [waypoint_follower]: Activating
+[waypoint_follower-17] [INFO] [1779548014.135623698] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548014.278008756] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-19] [INFO] [1779548014.278147401] [lifecycle_manager_navigation]: [34m[1mActivating velocity_smoother[0m[0m
+[velocity_smoother-18] [INFO] [1779548014.279341108] [velocity_smoother]: Activating
+[velocity_smoother-18] [INFO] [1779548014.279557902] [velocity_smoother]: Creating bond (velocity_smoother) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1779548014.413905033] [lifecycle_manager_navigation]: Server velocity_smoother connected with bond.
+[lifecycle_manager-19] [INFO] [1779548014.413988367] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-19] [INFO] [1779548014.414056970] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m
+[mission_metrics.py-10] [INFO] [1779548018.115955440] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.03m, elapsed=8.0s, efficiency=0.000 balls/m
+[rviz2-20] [INFO] [1779548018.121984384] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-20] [INFO] [1779548018.164345444] [rviz2]: Trying to create a map of size 106 x 89 using 1 swatches
+[rviz2-20] [INFO] [1779548018.166009961] [rviz2]: Trying to create a map of size 106 x 89 using 1 swatches
+[rviz2-20] [INFO] [1779548018.172074782] [rviz2]: Trying to create a map of size 60 x 60 using 1 swatches
+[rviz2-20] [ERROR] [1779548018.191952223] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : 
+[rviz2-20] active samplers with a different type refer to the same texture image unit
+[behavior_server-15] [WARN] [1779548019.517893229] [behavior_server]: Collision Ahead - Exiting Spin
+[behavior_server-15] [WARN] [1779548019.518006170] [behavior_server]: spin failed
+[behavior_server-15] [WARN] [1779548019.518096502] [behavior_server]: [spin] [ActionServer] Aborting handle.
+[mission_controller-8] [INFO] [1779548019.553268479] [mission_controller]: InitialSpin: done
+[mission_controller-8] [INFO] [1779548019.554622457] [mission_controller]: Selected target (2.95,2.05) density=0.20 dist=3.12m score=0.04
+[mission_controller-8] [INFO] [1779548019.555761935] [mission_controller]: NavigateToTarget: (2.95, 2.05)
+[bt_navigator-16] [INFO] [1779548019.558544830] [bt_navigator]: Begin navigating from current location (-0.02, 3.03) to (2.95, 2.05)
+[planner_server-14] [WARN] [1779548019.560619306] [planner_server]: Goal pose out of costmap bounds
+[planner_server-14] [WARN] [1779548019.560874679] [planner_server]: Planning algorithm DensityAwareAStarPlanner failed to generate a valid path to (2.95, 2.05)
+[planner_server-14] [WARN] [1779548019.560942740] [planner_server]: [compute_path_to_pose] [ActionServer] Aborting handle.
+[planner_server-14] [INFO] [1779548019.659433698] [global_costmap.global_costmap]: Received request to clear entirely the global_costmap
+[controller_server-12] [INFO] [1779548019.660631853] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[behavior_server-15] [INFO] [1779548019.673856331] [behavior_server]: Running spin
+[behavior_server-15] [INFO] [1779548019.674058033] [behavior_server]: Turning 1.57 for spin behavior.
+[behavior_server-15] [WARN] [1779548020.476684160] [behavior_server]: Collision Ahead - Exiting Spin
+[behavior_server-15] [WARN] [1779548020.476793113] [behavior_server]: spin failed
+[behavior_server-15] [WARN] [1779548020.476834707] [behavior_server]: [spin] [ActionServer] Aborting handle.
+[bt_navigator-16] [WARN] [1779548020.658932804] [bt_navigator]: [navigate_to_pose] [ActionServer] Aborting handle.
+[bt_navigator-16] [ERROR] [1779548020.659548759] [bt_navigator]: Goal failed
+[mission_controller-8] [WARN] [1779548020.703260058] [mission_controller]: NavigateToTarget: failed
+[mission_controller-8] [INFO] [1779548020.703472092] [mission_controller]: Mission ended: FAILURE
+[mission_controller-8] [INFO] [1779548020.703517731] [mission_controller]: === MISSION COMPLETE === visited_goals=1 seen_detections=yes
+[mission_metrics.py-10] [INFO] [1779548026.087227177] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.19m, elapsed=10.0s, efficiency=0.000 balls/m
+[mission_metrics.py-10] [INFO] [1779548034.266815217] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.21m, elapsed=12.0s, efficiency=0.000 balls/m
+[yolo_detector_node-6] [INFO] [1779548035.643749750] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1779548035.672752002] [yolo_detector]: Timing window: samples=1, avg_cb=4337.5ms, avg_inf=4306.0ms
+[mission_metrics.py-10] [INFO] [1779548042.107167765] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.21m, elapsed=14.0s, efficiency=0.000 balls/m
+[rviz2-20] [INFO] [1779548047.881022264] [rviz2]: Message Filter dropping message: frame 'base_scan' at time 5.410 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[mission_metrics.py-10] [INFO] [1779548050.092955554] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.21m, elapsed=16.0s, efficiency=0.000 balls/m
+[yolo_detector_node-6] [INFO] [1779548055.004282007] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1779548055.010714578] [yolo_detector]: Timing window: samples=1, avg_cb=2182.2ms, avg_inf=2177.1ms
+[mission_metrics.py-10] [INFO] [1779548058.146292635] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.21m, elapsed=18.0s, efficiency=0.000 balls/m
+[mission_metrics.py-10] [INFO] [1779548066.124786893] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.21m, elapsed=20.0s, efficiency=0.000 balls/m
+[yolo_detector_node-6] [INFO] [1779548073.944847922] [yolo_detector]: Published 0 target poses
+[yolo_detector_node-6] [INFO] [1779548073.977690967] [yolo_detector]: Timing window: samples=1, avg_cb=5937.8ms, avg_inf=5915.8ms
+[mission_metrics.py-10] [INFO] [1779548074.293626126] [mission_metrics]: METRICS: balls_total_seen=20, balls_remaining=20, balls_collected=0, coverage=0.0%, path_length=0.22m, elapsed=22.0s, efficiency=0.000 balls/m

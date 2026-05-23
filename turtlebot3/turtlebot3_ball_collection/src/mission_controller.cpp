@@ -34,7 +34,9 @@ static const char* kDefaultBTXML = R"(
             </Sequence>
             <ExploreAction/>
           </Fallback>
-          <NavigateToTarget/>
+          <ForceSuccess>
+            <NavigateToTarget/>
+          </ForceSuccess>
         </Sequence>
       </KeepRunningUntilFailure>
     </Sequence>
@@ -389,9 +391,11 @@ BT::NodeStatus InitialSpin::onStart()
   goal.time_allowance = rclcpp::Duration::from_seconds(60.0);
 
   auto opts = rclcpp_action::Client<nav2_msgs::action::Spin>::SendGoalOptions();
-  opts.result_callback = [this](auto) {
+  opts.result_callback = [this](const auto& result) {
     spin_done_ = true;
-    spin_success_ = true;
+    // Treat collision/abort as success for initial scan seeding
+    spin_success_ = (result.code == rclcpp_action::ResultCode::SUCCEEDED ||
+                     result.code == rclcpp_action::ResultCode::ABORTED);
   };
   opts.goal_response_callback = [this](auto future) {
     auto gh = future.get();
@@ -418,14 +422,18 @@ BT::NodeStatus InitialSpin::onRunning()
   if (!ctx) return BT::NodeStatus::FAILURE;
 
   if (spin_done_) {
-    if (spin_success_) {
-      RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: done");
-      return BT::NodeStatus::SUCCESS;
-    } else {
-      // Retry once if spin was rejected (e.g., footprint not ready)
-      RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: retrying after rejection...");
+      if (spin_success_) {
+        RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: done");
+        return BT::NodeStatus::SUCCESS;
+      }
+      // Retry on goal rejection (e.g., footprint not ready), with max retries
+      retry_count_++;
+      if (retry_count_ > kMaxRetries) {
+        RCLCPP_WARN(ctx->node->get_logger(), "InitialSpin: max retries (%d) exceeded, proceeding anyway", kMaxRetries);
+        return BT::NodeStatus::SUCCESS;
+      }
+      RCLCPP_INFO(ctx->node->get_logger(), "InitialSpin: retrying after rejection (%d/%d)...", retry_count_, kMaxRetries);
       return onStart();
-    }
   }
 
   // Timeout after 90s (full 360 spin at slow speed takes time)
@@ -541,10 +549,20 @@ BT::NodeStatus SelectBestTarget::tick()
     };
     std::vector<Candidate> candidates;
 
+    // Helper: check if a point is within the global costmap (SLAM map) bounds
+    auto is_in_costmap = [&](const geometry_msgs::msg::Point& pt) -> bool {
+      if (!ctx->latest_map) return true;  // no map yet, allow all
+      const auto& m = *ctx->latest_map;
+      double mx = (pt.x - m.info.origin.position.x) / m.info.resolution;
+      double my = (pt.y - m.info.origin.position.y) / m.info.resolution;
+      return mx >= 0 && my >= 0 && mx < m.info.width && my < m.info.height;
+    };
+
     // From peaks
     for (const auto& pose : ctx->latest_peaks.poses) {
       Candidate c;
       c.pt = pose.position;
+      if (!is_in_costmap(c.pt)) continue;
       c.density = density_at_world(c.pt, *ctx->latest_density);
       c.distance = std::hypot(
         c.pt.x - robot_pose.pose.position.x,
@@ -566,6 +584,7 @@ BT::NodeStatus SelectBestTarget::tick()
         c.pt.x = map.info.origin.position.x + (x + 0.5) * map.info.resolution;
         c.pt.y = map.info.origin.position.y + (y + 0.5) * map.info.resolution;
         c.pt.z = 0;
+        if (!is_in_costmap(c.pt)) continue;
         c.density = map.data[i] / 100.0;
         c.distance = std::hypot(
           c.pt.x - robot_pose.pose.position.x,
@@ -696,7 +715,6 @@ BT::NodeStatus NavigateToTarget::onStart()
   nav_success_ = false;
   goal_sent_ = false;
   goal_rejected_ = false;
-  retry_count_ = 0;
 
   sendGoal();
 

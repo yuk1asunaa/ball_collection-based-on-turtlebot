@@ -14,7 +14,9 @@
             </Sequence>
             <ExploreAction/>
           </Fallback>
-          <NavigateToTarget/>
+          <ForceSuccess>
+            <NavigateToTarget/>
+          </ForceSuccess>
         </Sequence>
       </KeepRunningUntilFailure>
     </Sequence>
